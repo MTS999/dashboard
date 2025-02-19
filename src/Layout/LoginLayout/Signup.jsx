@@ -8,10 +8,9 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import InputAdornment from "@mui/material/InputAdornment";
 // import OutlinedInput from '@mui/material/OutlinedInput';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
-import FormHelperText from '@mui/material/FormHelperText';
-import FormControl from '@mui/material/FormControl';
+// import InputLabel from '@mui/material/InputLabel';
+// import FormHelperText from '@mui/material/FormHelperText';
+// import FormControl from '@mui/material/FormControl';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -85,15 +84,17 @@ const Signup = () => {
       navigate("/login");
     }
   };
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
 
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
+  
+  // const handleClickShowPassword = () => setShowPassword((show) => !show);
 
-  const handleMouseUpPassword = (event) => {
-    event.preventDefault();
-  };
+  // const handleMouseDownPassword = (event) => {
+  //   event.preventDefault();
+  // };
+
+  // const handleMouseUpPassword = (event) => {
+  //   event.preventDefault();
+  // };
 
   
 

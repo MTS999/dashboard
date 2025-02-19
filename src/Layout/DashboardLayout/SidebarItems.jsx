@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -22,11 +22,8 @@ const SidebarItems = ({ to, icon: Icon }) => {
     console.log(label ,"label");
     console.log(currentItem,"current");
     
-  const [selectedItem, setSelectedItem] = useState(currentItem);
 
-  const handleListItemClick = () => {
-    setSelectedItem(currentItem);
-  };
+
 
   const isSelected = label===currentItem;
 
@@ -48,7 +45,6 @@ const SidebarItems = ({ to, icon: Icon }) => {
             boxShadow: 3,
           },
         }}
-        onClick={handleListItemClick}
         disablePadding
       >
         <ListItemButton>

@@ -6,10 +6,10 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { IconButton } from "@mui/material";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import InputLabel from "@mui/material/InputLabel";
-import FormControl from "@mui/material/FormControl";
-import FormHelperText from "@mui/material/FormHelperText";
+// import OutlinedInput from "@mui/material/OutlinedInput";
+// import InputLabel from "@mui/material/InputLabel";
+// import FormControl from "@mui/material/FormControl";
+// import FormHelperText from "@mui/material/FormHelperText";
 
 const NewPassword = () => {
   const [password, setPassword] = useState("");
@@ -70,12 +70,14 @@ const NewPassword = () => {
 
     navigate("/login");
   };
-  const togglePasswordVisibility = () => {
-    setShowPassword((prev) => !prev);
-  };
-  const toggleConfirmPasswordVisibility = () => {
-    setShowConfirmPassword((prev) => !prev);
-  };
+
+  
+  // const togglePasswordVisibility = () => {
+  //   setShowPassword((prev) => !prev);
+  // };
+  // const toggleConfirmPasswordVisibility = () => {
+  //   setShowConfirmPassword((prev) => !prev);
+  // };
 
  
   return (
