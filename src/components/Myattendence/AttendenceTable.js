@@ -122,7 +122,7 @@ const AttendenceTable = () => {
               />
             </Grid>
             <Grid size={{ xs: 12, sm: 4 }}>
-              <div className="center gap">
+              <div className="center gap flex-center">
                 <TextField
                   label="To"
                   type="date"
@@ -130,17 +130,17 @@ const AttendenceTable = () => {
                   onChange={(e) => setDateTo(e.target.value)}
                   fullWidth
                 />
-                <Box onClick={setInitialDates}>
+                <div onClick={setInitialDates}>
                   <IconButton>
                     <RotateLeftSharpIcon />
                   </IconButton>
-                </Box>
+                </div>
               </div>
             </Grid>
             <Grid size={12} textAlign={"end"} mr={3}>
-              <Button type="submit" variant="contained">
+              <button className="theme--button py-2" type="submit" variant="contained">
                 Filter
-              </Button>
+              </button>
             </Grid>
           </Grid>
         </form>

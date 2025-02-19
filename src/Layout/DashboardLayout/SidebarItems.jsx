@@ -19,8 +19,8 @@ const SidebarItems = ({ to, icon: Icon }) => {
     const label = formatPathToTitle(to);
     const currentItem=formatPathToTitle(location.pathname)
 
-    console.log(label ,"label");
-    console.log(currentItem,"current");
+    // console.log(label ,"label");
+    // console.log(currentItem,"current");
     
 
 

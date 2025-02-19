@@ -2,6 +2,9 @@ import { Outlet } from "react-router-dom";
 import { metaLogixLogo, startup } from "../../assets";
 
 const LoginLayout = () => {
+
+  console.log("mts");
+  
   return (
     <>
       <div className="container-fluid vh-100 p-0">

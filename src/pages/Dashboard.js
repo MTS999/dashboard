@@ -1,12 +1,15 @@
 import React from 'react'
 import Welcome from '../components/Dashboard/Welcome'
 import UserData from '../components/Dashboard/UserData'
-// import MembersOnLeaveTable from '../components/Dashboard/MembersOnLeaveTable'
+import Bootstrap from '../components/Dashboard/Bootstrap'
 const Dashboard = () => {
+
+  
   return (
     <div>
-      <Welcome/>
-      <UserData/>
+      <Bootstrap/>
+      {/* <Welcome/> */}
+      {/* <UserData/> */}
     </div>
   )
 }

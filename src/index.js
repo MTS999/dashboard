@@ -5,7 +5,7 @@ import App from './App';
 import { ThemeProvider } from '@emotion/react';
 import theme from './theme';
 import "./assets/css/style.css"
-
+// import "./assets/css/custom-bootstrap.scss"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

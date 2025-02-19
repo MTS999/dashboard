@@ -76,12 +76,12 @@ const Signup = () => {
   };
 
   const handleSubmit = (e) => {
+    navigate("/login");
     e.preventDefault();
-    if (validateForm()) {
-      localStorage.setItem("userData", JSON.stringify(formData));
-      // alert("signup succccessful");
-      navigate("/login");
-    }
+    // if (validateForm()) {
+    //   localStorage.setItem("userData", JSON.stringify(formData));
+    //   // alert("signup succccessful");
+    // }
   };
 
   // const handleClickShowPassword = () => setShowPassword((show) => !show);

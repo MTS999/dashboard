@@ -73,11 +73,14 @@ const Leaverecord = () => {
     const today = new Date();
 
     // Calculate the first day of the current month
+
     const firstDay = new Date(today.getFullYear(), today.getMonth(), 1);
     // Calculate the last day of the current month
+
     const lastDay = new Date(today.getFullYear(), today.getMonth() + 1, 0);
 
     // Format dates to YYYY-MM-DD
+
     const formatDate = (date) => {
       const offsetDate = new Date(
         date.getTime() - date.getTimezoneOffset() * 60000
@@ -129,7 +132,7 @@ const Leaverecord = () => {
               />
             </Grid>
             <Grid size={{ xs: 12, sm: 4 }}>
-              <div className="center gap">
+              <div className="center gap flex-center">
                 <TextField
                   label="To"
                   type="date"
@@ -151,31 +154,19 @@ const Leaverecord = () => {
                 justifyContent={"flex-end"}
                 width={"100%"}
               >
-                <Button
-                  //   type="submit"
-                  variant="contained"
-                  onClick={handleFilter}
-                  size="small"
-                >
+                <button onClick={handleFilter} className="theme--button p-2">
                   Filter
                   <span className="button-icon">
                     <FilterAltIcon fontSize="small" />
                   </span>
-                </Button>
+                </button>
                 <Link to={"/leaves/add-leaves"}>
-                  <Button
-                    // sx={{
-                    //      boxShadow:"rgba(1, 102, 153, 0.24) 0px 8px 16px 0px"
-
-                    //     }}
-                    variant="contained"
-                    size="small"
-                  >
+                  <button className="theme--button p-2">
                     <span className="button-icon right-margin">
                       <AddSharpIcon fontSize="small" />
                     </span>
                     New Leave
-                  </Button>
+                  </button>
                 </Link>
               </Stack>
             </Grid>
@@ -233,7 +224,7 @@ const Leaverecord = () => {
                     <TableCell colSpan={columns.length} align="center">
                       <Box className="align-content" textAlign="center" p={2}>
                         <img
-                        className="leave-record-img"
+                          className="leave-record-img"
                           src={leaveRecord}
                           alt="leave-record"
                           width="100"

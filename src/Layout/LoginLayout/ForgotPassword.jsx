@@ -3,6 +3,9 @@ import TextField from "@mui/material/TextField";
 import { useNavigate ,Link} from "react-router-dom";
 
 const ForgotPassword = () => {
+
+  console.log("mtssssss");
+  
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
 
