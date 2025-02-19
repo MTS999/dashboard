@@ -4,13 +4,15 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
-  overflow-y: auto; 
+  /* overflow-x: hidden; */
+  /* overflow-y: auto;  */
   box-sizing: border-box;
 }
-body {
+body ,html{
   font-family: "Montserrat", serif;
   color: var(--gray--color);
+   overflow-x: hidden;
+  overflow-y: hidden; 
 }
 
 :root {
@@ -197,12 +199,42 @@ h1 {
   border-color: var(--primary-color);
 }
 
+/* // DAshBoard Layout */
+
+/* sidebar */
 
 .sidebar-logo{
   width: 100px;
   height: 100px;
 }
 
+.drawer-list{
+  padding: 20px;
+}
+
+.drawer-icons{
+  background-color: var(--white-color);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  margin-right: 10px;
+ 
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.drawer-icons-dark{
+  color: var(--gray--color);
+}
+
+
+.leave-icons{
+  background-color: var(--primary-color);
+  display: inline-block;
+  padding:7px 7px 0px 5px;
+  
+  border-radius: 10px;
+}
 
 /* media queries */
 
@@ -284,30 +316,3 @@ h1 {
   transition: 0s
 }
 
-.drawer-list{
-  padding: 20px;
-}
-
-.drawer-icons{
-  background-color: var(--white-color);
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4px;
-  margin-right: 10px;
- 
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-.drawer-icons-dark{
-  color: var(--gray--color);
-}
-
-
-.leave-icons{
-  background-color: var(--primary-color);
-  display: inline-block;
-  padding:7px 7px 0px 5px;
-  
-  border-radius: 10px;
-}

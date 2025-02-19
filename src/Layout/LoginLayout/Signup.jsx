@@ -7,7 +7,11 @@ import { useNavigate } from "react-router-dom";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import InputAdornment from "@mui/material/InputAdornment";
-
+// import OutlinedInput from '@mui/material/OutlinedInput';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import FormHelperText from '@mui/material/FormHelperText';
+import FormControl from '@mui/material/FormControl';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -81,8 +85,14 @@ const Signup = () => {
       navigate("/login");
     }
   };
-  const togglePasswordVisibility = () => {
-    setShowPassword((prev) => !prev);
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
+  const handleMouseUpPassword = (event) => {
+    event.preventDefault();
   };
 
   
@@ -134,7 +144,7 @@ const Signup = () => {
           error={!!errors.email}
           helperText={errors.email}
         />
-       <TextField
+         <TextField
           id="password"
           name="password"
           label="Password"
@@ -145,17 +155,49 @@ const Signup = () => {
           onChange={handleChange}
           error={!!errors.password}
           helperText={errors.password}
-          
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
-                <IconButton onClick={togglePasswordVisibility} edge="end">
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                <IconButton onClick={()=>setShowPassword(!showPassword)} edge="end">
+                  {!showPassword ? <VisibilityOff /> : <Visibility />}
                 </IconButton>
               </InputAdornment>
             ),
           }}
         />
+{/*      
+        <FormControl fullWidth variant="outlined">
+          <InputLabel htmlFor="outlined-adornment-password">
+            Password
+          </InputLabel>
+          <OutlinedInput
+            id="password"
+            name="password"
+            label="Password"
+            variant="outlined"
+            type={showPassword ? "text" : "password"}
+            fullWidth
+            value={formData.password}
+            onChange={handleChange}
+            error={!!errors.password}
+            helperText={errors.password}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label={
+                    showPassword ? "hide the password" : "display the password"
+                  }
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  onMouseUp={handleMouseUpPassword}
+                  edge="end"
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+          />
+        </FormControl> */}
         <button className="theme--button width--100" onClick={handleSubmit}>
           SIGNUP
         </button>

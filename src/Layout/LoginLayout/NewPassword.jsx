@@ -6,6 +6,10 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { IconButton } from "@mui/material";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputLabel from "@mui/material/InputLabel";
+import FormControl from "@mui/material/FormControl";
+import FormHelperText from "@mui/material/FormHelperText";
 
 const NewPassword = () => {
   const [password, setPassword] = useState("");
@@ -17,6 +21,7 @@ const NewPassword = () => {
   });
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const validateData = () => {
     let valid = true;
@@ -68,7 +73,11 @@ const NewPassword = () => {
   const togglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
   };
+  const toggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword((prev) => !prev);
+  };
 
+ 
   return (
     <>
       <div className="back-page-icon ">
@@ -96,12 +105,11 @@ const NewPassword = () => {
           onChange={(e) => setPassword(e.target.value)}
           error={!!errors.password}
           helperText={errors.password}
-          margin="normal"
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
-                <IconButton onClick={togglePasswordVisibility} edge="end">
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                <IconButton onClick={()=>setShowPassword(!showPassword)} edge="end">
+                  {!showPassword ? <VisibilityOff /> : <Visibility />}
                 </IconButton>
               </InputAdornment>
             ),
@@ -112,23 +120,97 @@ const NewPassword = () => {
           name="confirmPassword"
           label="confirmPassword"
           variant="outlined"
-          type={showPassword ? "text" : "password"}
+          type={showConfirmPassword ? "text" : "password"}
           fullWidth
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
-          error={!!errors.password}
-          helperText={errors.password}
-          margin="normal"
+          error={!!errors.confirmPassword}
+          helperText={errors.confirmPassword}
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
-                <IconButton onClick={togglePasswordVisibility} edge="end">
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                <IconButton onClick={()=>setShowConfirmPassword(!showConfirmPassword)} edge="end">
+                  {!showConfirmPassword ? <VisibilityOff /> : <Visibility />}
                 </IconButton>
               </InputAdornment>
             ),
           }}
         />
+        {/* <FormControl fullWidth variant="outlined">
+          <InputLabel htmlFor="outlined-adornment-password">
+            Password
+          </InputLabel>
+          <OutlinedInput
+            id="password"
+            name="password"
+            label="Password"
+            variant="outlined"
+            type={showPassword ? "text" : "password"}
+            fullWidth
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            error={!!errors.password}
+            // FormHelperText={errors.password}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label={
+                    showPassword ? "hide the password" : "display the password"
+                  }
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  onMouseUp={handleMouseUpPassword}
+                  edge="end"
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+          />
+          {errors.password && (
+            <FormHelperText>
+              Password must be at least 6 characters
+            </FormHelperText>
+          )}
+        </FormControl> */}
+{/* 
+        <FormControl fullWidth variant="outlined">
+          <InputLabel htmlFor="outlined-adornment-password">
+            Confirm Password
+          </InputLabel>
+          <OutlinedInput
+            id="confirmPassword"
+            name="confirmPassword"
+            label="confirmPassword"
+            variant="outlined"
+            type={showPassword ? "text" : "password"}
+            fullWidth
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            error={!!errors.password}
+            // FormHelperText={errors.password}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label={
+                    showPassword ? "hide the password" : "display the password"
+                  }
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  onMouseUp={handleMouseUpPassword}
+                  edge="end"
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+          />
+           {errors.confirmPassword && (
+            <FormHelperText>
+              Password must be at least 6 characters
+            </FormHelperText>
+          )}
+        </FormControl> */}
 
         <button className="theme--button width--100" onClick={handleSubmit}>
           Update Password

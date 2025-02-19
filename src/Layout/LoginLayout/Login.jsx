@@ -5,7 +5,12 @@ import InputAdornment from "@mui/material/InputAdornment";
 import { IconButton } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-// import OutlinedInput from '@mui/material/OutlinedInput';
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputLabel from "@mui/material/InputLabel";
+import FormHelperText from "@mui/material/FormHelperText";
+import FormControl from "@mui/material/FormControl";
+
+
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -72,8 +77,15 @@ const Login = () => {
       alert("No user found, Sign up first.");
     }
   };
-  const togglePasswordVisibility = () => {
-    setShowPassword((prev) => !prev);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
+  const handleMouseUpPassword = (event) => {
+    event.preventDefault();
   };
 
   return (
@@ -91,6 +103,7 @@ const Login = () => {
           label="Email"
           variant="outlined"
           fullWidth
+          required
           value={formData.email}
           onChange={handleChange}
           error={!!errors.email}
@@ -111,42 +124,47 @@ const Login = () => {
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
-                <IconButton onClick={togglePasswordVisibility} edge="end">
+                <IconButton onClick={handleClickShowPassword} edge="end">
                   {showPassword ? <VisibilityOff /> : <Visibility />}
                 </IconButton>
               </InputAdornment>
             ),
           }}
         />
+        {/* <FormControl fullWidth variant="outlined">
+          <InputLabel htmlFor="outlined-adornment-password">
+            Password
+          </InputLabel>
+          <OutlinedInput
+            id="password"
+            name="password"
+            label="Password"
+            variant="outlined"
+            type={showPassword ? "text" : "password"}
+            fullWidth
+            value={formData.password}
+            onChange={handleChange}
+            error={!!errors.password}
+            FormHelperText={errors.password}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label={
+                    showPassword ? "hide the password" : "display the password"
+                  }
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  onMouseUp={handleMouseUpPassword}
+                  edge="end"
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+          />
+                {errors.password && <FormHelperText>Password must be at least 6 characters</FormHelperText>}
 
-        {/* <OutlinedInput
-        id="password"
-        name="password"
-        label="Password"
-        variant="outlined"
-        type={showPassword ? "text" : "password"}
-        fullWidth
-        value={formData.password}
-        onChange={handleChange}
-        error={!!errors.password}
-        helperText={errors.password}
-        margin="normal"
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton
-                aria-label={
-                  showPassword ? "hide the password" : "display the password"
-                }
-                onClick={togglePasswordVisibility}
-                onMouseDown={handleMouseDownPassword}
-                onMouseUp={handleMouseUpPassword}
-                edge="end"
-              >
-                {showPassword ? <VisibilityOff /> : <Visibility />}
-              </IconButton>
-            </InputAdornment>
-          }
-        /> */}
+        </FormControl> */}
         <p className="forgot-password">
           <Link className="content-link" to={"/forgotpassword"}>
             Forgot Password
@@ -157,7 +175,6 @@ const Login = () => {
           LOGIN
         </button>
 
-     
         <p className="width--100">
           Do not have a account ?
           <Link className="content-link-signup " to={"/signup"}>
