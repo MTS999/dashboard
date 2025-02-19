@@ -5,12 +5,6 @@ import InputAdornment from "@mui/material/InputAdornment";
 import { IconButton } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-// import OutlinedInput from "@mui/material/OutlinedInput";
-// import InputLabel from "@mui/material/InputLabel";
-// import FormHelperText from "@mui/material/FormHelperText";
-// import FormControl from "@mui/material/FormControl";
-
-
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -21,8 +15,8 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const [showPassword, setShowPassword] = useState(false);
 
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -58,9 +52,10 @@ const Login = () => {
     return valid;
   };
   const handleSubmit = (e) => {
+    navigate("/dashboard");
     e.preventDefault();
 
-    if (!validateForm()) return;
+    // if (!validateForm()) return;
     const storedUser = JSON.parse(localStorage.getItem("userData"));
 
     if (storedUser) {
@@ -69,34 +64,25 @@ const Login = () => {
         storedUser.password === formData.password
       ) {
         // alert("Login successful!");
-        navigate("/dashboard");
       } else {
-        alert("invalid email or password");
+        // alert("invalid email or password");
       }
     } else {
-      alert("No user found, Sign up first.");
+      // alert("No user found, Sign up first.");
     }
   };
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
-  // const handleMouseDownPassword = (event) => {
-  //   event.preventDefault();
-  // };
-
-  // const handleMouseUpPassword = (event) => {
-  //   event.preventDefault();
-  // };
-
   return (
     <>
-      <div className="head-info">
-        <h4 className="head-title">Login to you account</h4>
+      <div className="mb-2">
+        <h4 className="fs-2 fw-normal">Login to you account</h4>
 
         <p>Enter your details below</p>
       </div>
 
-      <div className="login-form flex-center">
+      <div className="flex-center flex-column gap-3">
         <TextField
           id="email"
           name="email"
@@ -131,53 +117,20 @@ const Login = () => {
             ),
           }}
         />
-        {/* <FormControl fullWidth variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-password">
-            Password
-          </InputLabel>
-          <OutlinedInput
-            id="password"
-            name="password"
-            label="Password"
-            variant="outlined"
-            type={showPassword ? "text" : "password"}
-            fullWidth
-            value={formData.password}
-            onChange={handleChange}
-            error={!!errors.password}
-            FormHelperText={errors.password}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label={
-                    showPassword ? "hide the password" : "display the password"
-                  }
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  onMouseUp={handleMouseUpPassword}
-                  edge="end"
-                >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-          />
-                {errors.password && <FormHelperText>Password must be at least 6 characters</FormHelperText>}
 
-        </FormControl> */}
-        <p className="forgot-password">
+        <p className="w-100 text-end m-0">
           <Link className="content-link" to={"/forgotpassword"}>
             Forgot Password
           </Link>
         </p>
 
-        <button className="theme--button width--100" onClick={handleSubmit}>
+        <button className="theme--button w-100" onClick={handleSubmit}>
           LOGIN
         </button>
 
-        <p className="width--100">
+        <p className="w-100 text-end">
           Do not have a account ?
-          <Link className="content-link-signup " to={"/signup"}>
+          <Link className="content-link-signup ms-1" to={"/signup"}>
             signup
           </Link>
         </p>

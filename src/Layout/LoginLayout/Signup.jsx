@@ -1,18 +1,16 @@
 import { useState } from "react";
 import TextField from "@mui/material/TextField";
-import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
+// import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import { IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import InputAdornment from "@mui/material/InputAdornment";
-// import OutlinedInput from '@mui/material/OutlinedInput';
-// import InputLabel from '@mui/material/InputLabel';
-// import FormHelperText from '@mui/material/FormHelperText';
-// import FormControl from '@mui/material/FormControl';
+
 
 const Signup = () => {
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -25,6 +23,7 @@ const Signup = () => {
     lastName: "",
     firstName: "",
   });
+
   const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
@@ -85,7 +84,6 @@ const Signup = () => {
     }
   };
 
-  
   // const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   // const handleMouseDownPassword = (event) => {
@@ -96,22 +94,16 @@ const Signup = () => {
   //   event.preventDefault();
   // };
 
-  
-
   return (
     <>
-      <div  className="back-page-icon ">
+    
 
-        <IconButton onClick={()=>navigate("/login")}>
-          <KeyboardBackspaceIcon />
-        </IconButton>
-      </div>
-      <div className="head-info">
-        <h4 className="head-title">Create a new account</h4>
-      
+      <div className="mb-2">
+        <h4 className="fs-2 fw-normal">Create a new account</h4>
+
         <p>Enter your details below</p>
       </div>
-      <div className="login-form flex-center ">
+      <div className="flex-center flex-column gap-3">
         <TextField
           id="firstName"
           name="firstName"
@@ -145,7 +137,7 @@ const Signup = () => {
           error={!!errors.email}
           helperText={errors.email}
         />
-         <TextField
+        <TextField
           id="password"
           name="password"
           label="Password"
@@ -159,52 +151,23 @@ const Signup = () => {
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
-                <IconButton onClick={()=>setShowPassword(!showPassword)} edge="end">
+                <IconButton
+                  onClick={() => setShowPassword(!showPassword)}
+                  edge="end"
+                >
                   {!showPassword ? <VisibilityOff /> : <Visibility />}
                 </IconButton>
               </InputAdornment>
             ),
           }}
         />
-{/*      
-        <FormControl fullWidth variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-password">
-            Password
-          </InputLabel>
-          <OutlinedInput
-            id="password"
-            name="password"
-            label="Password"
-            variant="outlined"
-            type={showPassword ? "text" : "password"}
-            fullWidth
-            value={formData.password}
-            onChange={handleChange}
-            error={!!errors.password}
-            helperText={errors.password}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label={
-                    showPassword ? "hide the password" : "display the password"
-                  }
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  onMouseUp={handleMouseUpPassword}
-                  edge="end"
-                >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-          />
-        </FormControl> */}
-        <button className="theme--button width--100" onClick={handleSubmit}>
+        
+        <button className="theme--button w-100" onClick={handleSubmit}>
           SIGNUP
         </button>
-        <p className="width--100">
+        <p className="w-100 text-end pe-1">
           Do not have a account ?
-          <Link className="content-link-signup " to={"/login"}>
+          <Link className="content-link-signup ms-1" to={"/login"}>
             login
           </Link>
         </p>

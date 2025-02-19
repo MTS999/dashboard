@@ -1,8 +1,6 @@
 import { useState } from "react";
 import TextField from "@mui/material/TextField";
-import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
-import { IconButton } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useNavigate ,Link} from "react-router-dom";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -12,31 +10,27 @@ const ForgotPassword = () => {
     e.preventDefault();
     const storedUser = JSON.parse(localStorage.getItem("userData"));
 
+    navigate("/verify-code");
     if (storedUser?.email === email) {
       localStorage.setItem("resetCode", "123456");
-      navigate("/verify-code");
     } else {
-      alert("Email not found!");
+      // alert("Email not found!");
     }
   };
 
   return (
     <>
-      <div className="back-page-icon ">
-        <IconButton onClick={() => navigate(-1)}>
-          <KeyboardBackspaceIcon />
-        </IconButton>
-      </div>
-      <div className="head-info">
+     
+      <div className="mb-2">
 
-        <h4 className="head-title">Password Reset</h4>
+        <h4 className="fs-2 fw-normal">Password Reset</h4>
 
-        <p className="forgot-password-paragraph">
+        <p >
           Forgotten your password? Enter your e-mail address below, and
           we&apos;ll send you an e-mail allowing you to reset it.
         </p>
       </div>
-      <div className="login-form flex-center">
+      <div className="flex-center flex-column gap-3">
         <TextField
           id="email"
           name="email"
@@ -47,7 +41,12 @@ const ForgotPassword = () => {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <button className="theme--button width--100" onClick={handleSubmit}>
+         <p className="w-100 text-end m-0">
+          <Link className="content-link" to={"/login"}>
+          Back to Login
+          </Link>
+        </p>
+        <button className="theme--button w-100" onClick={handleSubmit}>
           RESET MY PASSWORD
         </button>
       </div>

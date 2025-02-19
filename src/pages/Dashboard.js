@@ -7,7 +7,6 @@ const Dashboard = () => {
     <div>
       <Welcome/>
       <UserData/>
-      {/* <MembersOnLeaveTable/> */}
     </div>
   )
 }

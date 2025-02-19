@@ -4,11 +4,13 @@ import { Stack } from "@mui/material";
 
 const Welcome = () => {
   return (
-    <Stack mb={3}>
-      <Typography variant="h3" color="text.primary">
-        Welcome Taimoor Shahid
-      </Typography>
-    </Stack>
+   <>
+   <h4 className="fs-2 fw-normal">
+    Taimoor Shahid ,Welcome Back
+   </h4>
+   </>
+
+
   );
 };
 

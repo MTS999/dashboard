@@ -27,7 +27,11 @@ body ,html{
   --gray--color: #bfbfbf;
 
   /* width */
+  
+
 }
+
+
 
 /* element selector */
 a {
@@ -51,6 +55,10 @@ img {
 }
 .width--100 {
   width: 100%;
+}
+
+.max-width--520{
+  max-width: 520px;
 }
 /* theme styling */
 
@@ -84,18 +92,8 @@ img {
 
 /* Login Layout */
 
-.main-container {
-  height: 100vh;
-  width: 100vw;
-}
 
-.left-container {
-  width: 70%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  position: relative;
-}
+
 .login-logo {
   position: absolute;
   top: 50px;
@@ -103,17 +101,9 @@ img {
   width: 50px;
   height: 50px;
 }
-.left-container-content {
-  /* background-color: aqua; */
-  height: 100%;
-  width: 100%;
-  max-width: 520px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 
-  /* background-color: #bfbfbf; */
-}
+
+
 .left-container-content-box {
   width: 100%;
   display: flex;
@@ -143,29 +133,26 @@ img {
   justify-content: end;
 }
 .head-info {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 15px;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* gap: 10px; */
+  /* margin-bottom: 15px; */
 }
-.head-title {
+/* .head-title {
   font-size: 1.82143rem;
   font-weight: 400;
-}
-h1 {
-  font-size: 2rem;
-}
+} */
 
-.login-form {
-  /* background-color: aquamarine; */
+
+/* .login-form {
   flex-direction: column;
   gap: 18px;
-}
+} */
 
-.forgot-password {
+/* .forgot-password {
   text-align: end;
   width: 100%;
-}
+} */
 
 .content-link {
   color: var(--blueLight--color);
@@ -176,21 +163,13 @@ h1 {
   color: var(--blueLight--color);
 }
 /* verify code */
-.code-inputs {
 
-  display: flex;
-  gap: 10px;
-  justify-content: space-between;
-  margin: 20px 0;
-}
 
 .code-box {
   width: 50px;
   height: 50px;
   text-align: center;
-  font-size: 24px;
   border: 2px solid var(--gray--color);
-  border-radius: 8px;
   outline: none;
   transition: border-color 0.3s ease;
 }
