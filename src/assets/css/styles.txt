@@ -1,0 +1,273 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: "Montserrat", serif;
+
+}
+
+:root{
+    --text-color: rgb(99, 115, 129);
+    --primary-color: #256699;
+    --white-color:white;
+    --gray--color:#BFBFBF
+
+}
+a{
+    text-decoration: none;
+}
+
+/* commom classess */
+img{
+    max-width: 100%;
+}
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.gap{
+    gap: 20px;
+}
+
+.button-icon{
+    margin-left: 10px; 
+     margin-top: 5px;
+}
+.right-margin{
+    margin-left: 0px;
+    margin-right: 10px;
+}
+
+.align-content{
+    /* width: 100VW; */
+    text-align: center;
+    /* background-color: #0d6efd; */
+}
+.container-textfield{
+    padding: 10px;
+}
+/* logo images design */
+
+
+.meta-logo{
+    height: 150px;
+    display: flex ;
+    align-items: center;
+    justify-content: center;
+
+
+}
+.logo{
+    width: 50px;
+    height: 50px;
+}
+.sidebar-logo{
+    width: 80px;
+    height: 80px;
+}
+.leave-record-img{
+    width: 300px;
+    height: 300px;
+}
+
+.drawer-list{
+    padding: 20px;
+}
+
+.drawer-icons{
+    background-color: var(--white-color);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    margin-right: 10px;
+   
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.drawer-icons-dark{
+    color: var(--gray--color);
+}
+.manu-bitton{
+    border: none;
+}
+/* Dashboard */
+    /* welcome */
+
+    .welcome-user{
+        font-size: large;
+    }
+
+    /* .data-card{
+        background-color: aqua;
+    } */
+
+/* attendence table */
+.leave-icons{
+    background-color: var(--primary-color);
+    display: inline-block;
+    padding:7px 7px 0px 5px;
+    
+    border-radius: 10px;
+}
+
+    /* login */
+    .main-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+        color: var(--text-color);
+    }
+    
+    
+    .left-container{
+        width: 60%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        position: relative;
+    }
+    
+    
+    .left-container-content{
+        height: 100%;
+        width: 60%;
+        display: flex;
+        align-items: strat;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .left-container-content-box{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        /* align-items: start; */
+        padding-left: 20px;
+        padding-right: 20px;
+        gap: 25px;
+    }
+    .info{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+    .logo{
+        position: absolute;
+        top: 30px;
+        left: 50px;
+    }
+    
+    h1{
+        font-size: 2rem;
+    }
+    .content-link{
+        text-decoration: none;
+        margin-left: 5px;
+    }
+    
+    .forgot-password{
+        
+        text-align: end;
+        text-decoration: none;
+    }
+    
+    
+    
+    
+    
+     /* right containor */
+    
+    .right-container{
+        width: 40%;
+        height: 100vh;
+      
+    }
+     .right-img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        
+     }
+    
+    
+    
+    
+    
+     @media (max-width: 1200px) {
+       
+       
+        .left-container-content{
+            width: 80%;
+        }
+       
+     }
+     @media (max-width: 900px) {
+       
+        
+        .left-container-content{
+            width: 90%;
+        }
+       
+     }
+    @media(max-width:768px){
+       
+        .left-container{
+            width: 100%;
+        }
+        .right-container{
+            display: none;
+        }
+        .left-container-content{
+            width: 70%;
+        }
+        .logo{
+            /* top: 50%; */
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+       
+    }
+    
+    @media(max-width:600px){
+    
+        .main-container{
+            flex-direction: column;
+            /* height: 200vh; */
+        }
+        .left-container{
+            
+            width: 100%;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+        .left-container-content{
+            width: 100%;
+        }
+       
+    
+       
+        
+       
+    }
+    
+    @media (max-width:400px){
+    
+      
+        .left-container-content-box{
+         padding-left: 5px;
+         padding-right: 5px;
+         /* background-color: red; */
+        }
+        
+     }

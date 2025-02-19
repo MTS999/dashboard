@@ -1,0 +1,96 @@
+{
+      "id": 1,
+      "MemberName": "John Doe",
+      "LeaveDate": "2025-02-01",
+      "LeaveType": "Sick Leave",
+      "late": 0,
+      "status": "Approved"
+    },
+    {
+      "id": 2,
+      "MemberName": "Jane Smith",
+      "LeaveDate": "2025-02-03",
+      "LeaveType": "Vacation",
+      "late": 5,
+      "status": "Pending"
+    },
+    {
+      "id": 3,
+      "MemberName": "Mike Johnson",
+      "LeaveDate": "2025-02-05",
+      "LeaveType": "Casual Leave",
+      "late": 10,
+      "status": "Rejected"
+    },
+    {
+      "id": 4,
+      "MemberName": "Emily Davis",
+      "LeaveDate": "2025-02-07",
+      "LeaveType": "Maternity Leave",
+      "late": 0,
+      "status": "Approved"
+    },
+    {
+      "id": 5,
+      "MemberName": "Chris Wilson",
+      "LeaveDate": "2025-02-09",
+      "LeaveType": "Paternity Leave",
+      "late": 3,
+      "status": "Pending"
+    },
+    {
+      "id": 6,
+      "MemberName": "Sarah Lee",
+      "LeaveDate": "2025-02-11",
+      "LeaveType": "Sick Leave",
+      "late": 2,
+      "status": "Approved"
+    },
+    {
+      "id": 7,
+      "MemberName": "Tom Harris",
+      "LeaveDate": "2025-02-13",
+      "LeaveType": "Vacation",
+      "late": 4,
+      "status": "Rejected"
+    },
+    {
+      "id": 8,
+      "MemberName": "Olivia Brown",
+      "LeaveDate": "2025-02-15",
+      "LeaveType": "Casual Leave",
+      "late": 1,
+      "status": "Pending"
+    },
+    {
+      "id": 9,
+      "MemberName": "David Clark",
+      "LeaveDate": "2025-02-17",
+      "LeaveType": "Sick Leave",
+      "late": 6,
+      "status": "Approved"
+    },
+    {
+      "id": 10,
+      "MemberName": "Sophia Miller",
+      "LeaveDate": "2025-02-19",
+      "LeaveType": "Vacation",
+      "late": 3,
+      "status": "Rejected"
+    },
+    {
+      "id": 11,
+      "MemberName": "Liam Thompson",
+      "LeaveDate": "2025-02-21",
+      "LeaveType": "Casual Leave",
+      "late": 0,
+      "status": "Pending"
+    },
+    {
+      "id": 12,
+      "MemberName": "Emma Johnson",
+      "LeaveDate": "2025-02-23",
+      "LeaveType": "Sick Leave",
+      "late": 7,
+      "status": "Approved"
+    }

@@ -1,0 +1,144 @@
+import React from "react";
+import { useState } from "react";
+
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
+
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import HailIcon from "@mui/icons-material/Hail";
+import TimeToLeaveIcon from "@mui/icons-material/TimeToLeave";
+// import CreditScoreIcon from "@mui/icons-material/CreditScore";
+import { metaLogixLogo } from "../../assets";
+import { Link } from "react-router-dom";
+
+const SideBar = () => {
+  const [selectedItem, setSelectedItem] = useState("dashboard");
+  const handleListItemClick = (item) => {
+    setSelectedItem(item);
+  };
+  const getIconColor = (item) => {
+    return selectedItem === item ? "primary.main" : "primary.dark";
+  };
+
+  return (
+    <>
+      <div>
+        <div className="meta-logo">
+          <img src={metaLogixLogo} alt="logo" width={"80px"} height={"80px"} />
+        </div>
+        <List
+          sx={{
+            padding: 2,
+          }}
+        >
+          <Link to="/dashboard">
+            <ListItem
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+
+                marginY: "2px",
+                borderRadius: (theme) => theme.shape.borderRadius,
+                backgroundColor:
+                  selectedItem === "dashboard" ? "primary.main" : "",
+                color:
+                  selectedItem === "dashboard"
+                    ? "text.secondary"
+                    : "text.primary",
+
+                "&:hover": {
+                  bgcolor: "primary.main",
+                  color: "text.secondary",
+                  transform: "scaleX(1.1)", // Scales the item by 5%
+                  boxShadow: 3, // Adds a subtle shadow on hover
+                },
+              }}
+              key={"Dashboard"}
+              onClick={() => handleListItemClick("dashboard")}
+              disablePadding
+            >
+              <ListItemButton>
+                <div className={`drawer-icons `}>
+                  <DashboardIcon sx={{ color: getIconColor("dashboard") }} />
+                </div>
+                <ListItemText primary={"dashboard"} />
+              </ListItemButton>
+            </ListItem>
+          </Link>
+          <Link to="/my-attendence">
+            <ListItem
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+
+                marginY: "2px",
+                borderRadius: (theme) => theme.shape.borderRadius,
+                backgroundColor:
+                  selectedItem === "attendence" ? "primary.main" : "",
+                color:
+                  selectedItem === "attendence"
+                    ? "text.secondary"
+                    : "text.primary",
+
+                "&:hover": {
+                  bgcolor: "primary.main",
+                  color: "text.secondary",
+                  transform: "scaleX(1.1)", // Scales the item by 5%
+                  boxShadow: 3, // Adds a subtle shadow on hover
+                },
+              }}
+              key={"attendence"}
+              onClick={() => handleListItemClick("attendence")}
+              disablePadding
+            >
+              <ListItemButton>
+                <div className={`drawer-icons `}>
+                  <HailIcon sx={{ color: getIconColor("attendence") }} />
+                </div>
+                <ListItemText primary={"attendence"} />
+              </ListItemButton>
+            </ListItem>
+          </Link>
+          <Link to="/leaves">
+            <ListItem
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+
+                marginY: "2px",
+                borderRadius: (theme) => theme.shape.borderRadius,
+                backgroundColor:
+                  selectedItem === "leaves" ? "primary.main" : "",
+                color:
+                  selectedItem === "leaves"
+                    ? "text.secondary"
+                    : "text.primary",
+
+                "&:hover": {
+                  bgcolor: "primary.main",
+                  color: "text.secondary",
+                  transform: "scaleX(1.1)", // Scales the item by 5%
+                  boxShadow: 3, // Adds a subtle shadow on hover
+                },
+              }}
+              key={"leaves"}
+              onClick={() => handleListItemClick("leaves")}
+              disablePadding
+            >
+              <ListItemButton>
+                <div className={`drawer-icons `}>
+                  <TimeToLeaveIcon sx={{ color: getIconColor("leaves") }} />
+                </div>
+                <ListItemText primary={"leaves"} />
+              </ListItemButton>
+            </ListItem>
+          </Link>
+        </List>
+      </div>
+    </>
+  );
+};
+
+export default SideBar;
