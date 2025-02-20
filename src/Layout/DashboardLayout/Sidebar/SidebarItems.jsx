@@ -9,21 +9,17 @@ const SidebarItems = ({ to, icon: Icon }) => {
     const firstSegment = path.split("/")[1];
     if (!firstSegment) return "";
     return firstSegment
-    
     .split("-")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
   };
   
+
   const location = useLocation();
     const label = formatPathToTitle(to);
     const currentItem=formatPathToTitle(location.pathname)
 
-    // console.log(label ,"label");
-    // console.log(currentItem,"current");
-    
-
-
+  
 
   const isSelected = label===currentItem;
 

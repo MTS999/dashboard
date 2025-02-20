@@ -15,9 +15,9 @@ const NewPassword = () => {
     password: "",
     confirmPassword: "",
   });
-  const navigate = useNavigate();
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const navigate = useNavigate();
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const validateData = () => {
     let valid = true;

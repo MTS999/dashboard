@@ -11,7 +11,6 @@ import AppbarHeader from "./AppbarHeader";
 const drawerWidth = 280;
 
 function MainLayout(props) {
-  const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
 
@@ -20,19 +19,11 @@ function MainLayout(props) {
     setMobileOpen(false);
   };
 
-  const handleDrawerTransitionEnd = () => {
-    setIsClosing(false);
-  };
-
   const handleDrawerToggle = () => {
     if (!isClosing) {
       setMobileOpen(!mobileOpen);
     }
   };
-
-  // Remove this const when copying and pasting into your project.
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -70,14 +61,9 @@ function MainLayout(props) {
       >
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Drawer
-          container={container}
           variant="temporary"
           open={mobileOpen}
-          onTransitionEnd={handleDrawerTransitionEnd}
           onClose={handleDrawerClose}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
           sx={{
             display: { md: "block", lg: "none" },
             "& .MuiDrawer-paper": {

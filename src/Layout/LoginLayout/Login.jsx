@@ -7,6 +7,12 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 const Login = () => {
+  const apiKey = process.env.REACT_APP_API_KEY;
+  const apiUrl = process.env.REACT_APP_API_URL;
+
+  console.log(`API Key: ${apiKey}`);
+  console.log(`API URL: ${apiUrl}`);
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
