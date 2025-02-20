@@ -3,19 +3,15 @@ import Typography from "@mui/material/Typography";
 import { useState, useEffect } from "react";
 import Paper from "@mui/material/Paper";
 import TableContainer from "@mui/material/TableContainer";
-import Grid from "@mui/material/Grid2";
 import {
   TextField,
   MenuItem,
-  Button,
   Table,
   TableHead,
   TableBody,
   TableRow,
   TableCell,
-  Stack,
   TablePagination,
-  Card,
   Chip,
   Box,
   IconButton,
@@ -148,6 +144,7 @@ const Leaverecord = () => {
               className="theme--button py-2 me-3"
               type="submit"
               variant="contained"
+              onClick={handleFilter}
             >
               Filter
               <span className="button-icon ms-1">

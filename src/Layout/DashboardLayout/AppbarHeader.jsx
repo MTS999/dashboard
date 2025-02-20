@@ -3,7 +3,7 @@ import AppBar from "@mui/material/AppBar";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
-import BasicMenu from "./BasicMenu";
+import AccountMenu from "./AccountMenu/AccountMenu";
 import { Stack } from "@mui/material";
 
 const AppBarNav = ({handleDrawerToggle}) => {
@@ -30,7 +30,7 @@ const AppBarNav = ({handleDrawerToggle}) => {
             <MenuIcon />
           </IconButton>
           <Stack textAlign={"end"} width={"100%"}>
-            <BasicMenu />
+            <AccountMenu />
           </Stack>
         </Toolbar>
       </AppBar>

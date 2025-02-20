@@ -1,14 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid2";
+
 import {
-  Stack,
   IconButton,
-  Paper,
   TextField,
   MenuItem,
-  Button,
 } from "@mui/material";
 import KeyboardBackspaceSharpIcon from "@mui/icons-material/KeyboardBackspaceSharp";
 import { useNavigate } from "react-router-dom";
@@ -92,7 +87,7 @@ const AddLeave = () => {
         <div className="row mb-2">
           <div className="text-end mb-3">
             <button
-              className="theme--button py-1"
+              className="theme--button py-1 px-3 "
               type="submit"
               variant="contained"
             >

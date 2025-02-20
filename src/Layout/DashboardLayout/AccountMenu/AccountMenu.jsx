@@ -4,8 +4,10 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { useNavigate } from "react-router-dom";
 import { Avatar } from "@mui/material";
+import accountMenuItems from "./config";
 
-export default function BasicMenu() {
+
+export default function AccountMenu() {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);

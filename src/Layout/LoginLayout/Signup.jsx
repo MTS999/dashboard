@@ -167,7 +167,7 @@ const Signup = () => {
         </button>
         <p className="w-100 text-end pe-1">
           Do not have a account ?
-          <Link className="content-link-signup ms-1" to={"/login"}>
+          <Link className="content-link ms-1" to={"/login"}>
             login
           </Link>
         </p>

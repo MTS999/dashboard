@@ -4,9 +4,9 @@ import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Drawer from "@mui/material/Drawer";
 import Toolbar from "@mui/material/Toolbar";
-import SideBar from "./SideBar";
+import AppSidebar from "./Sidebar/AppSidebar";
 import { Outlet } from "react-router-dom";
-import AppBarNav from "./AppBarNav";
+import AppbarHeader from "./AppbarHeader";
 
 const drawerWidth = 280;
 
@@ -62,7 +62,7 @@ function MainLayout(props) {
         </Toolbar>
       </AppBar> */}
 
-      <AppBarNav handleDrawerToggle={handleDrawerToggle}  />
+      <AppbarHeader handleDrawerToggle={handleDrawerToggle}  />
       <Box
         component="nav"
         sx={{ width: { lg: drawerWidth }, flexShrink: { lg: 0 } }}
@@ -86,7 +86,7 @@ function MainLayout(props) {
             },
           }}
         >
-          <SideBar />
+          <AppSidebar />
         </Drawer>
         <Drawer
           variant="permanent"
@@ -100,7 +100,7 @@ function MainLayout(props) {
           }}
           open
         >
-          <SideBar />
+          <AppSidebar />
         </Drawer>
       </Box>
       <Box
