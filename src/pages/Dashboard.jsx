@@ -1,19 +1,17 @@
-import React from 'react'
-import Welcome from '../components/Dashboard/Welcome'
-import UserData from '../components/Dashboard/UserData'
-import GenericModal from '../components/GeneralComponents/GenericModal'
-
+import React from "react";
+import Welcome from "../components/Dashboard/Welcome";
+import UserData from "../components/Dashboard/UserData";
+import SidebarDrawer from "../components/GeneralComponents/SidebarDrawer";
 
 
 const Dashboard = () => {
-
   return (
-    <div>
-      <GenericModal/>
-      {/* <Welcome/> */}
-      {/* <UserData/> */}
-    </div>
-  )
-}
+    <>
+    <SidebarDrawer/>
+      <Welcome />
+      <UserData />
+    </>
+  );
+};
 
-export default Dashboard
+export default Dashboard;

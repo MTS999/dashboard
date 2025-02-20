@@ -1,10 +1,7 @@
 import React from "react";
 
 const UserDataCard = ({ icon: Icon, backgroundColor, value, label }) => {
-  console.log(label);
-  console.log(value);
-  console.log(backgroundColor);
-  console.log("mts");
+
 
   return (
     <>

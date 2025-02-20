@@ -5,14 +5,13 @@ import InputAdornment from "@mui/material/InputAdornment";
 import { IconButton } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import useFetch from "../../hooks/useFetch";
 
 const Login = () => {
-  const apiKey = process.env.REACT_APP_API_KEY;
-  const apiUrl = process.env.REACT_APP_API_URL;
-
-  console.log(`API Key: ${apiKey}`);
-  console.log(`API URL: ${apiUrl}`);
-
+  const { request, loading } = useFetch();
+  const [error,setError]=useState(null)
+  const [user, setUser] = useState(null);
+  const navigate=useNavigate()
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -22,8 +21,38 @@ const Login = () => {
     password: "",
   });
 
+  console.log(user);
+  
   const [showPassword, setShowPassword] = useState(false);
-  const navigate = useNavigate();
+
+
+  const login = async () => {
+    const {data,error} = await request(
+      "GET",
+      "https://api.escuelajs.co/api/v1/products",
+      formData
+    );
+   
+    if(error){
+      setError(error)
+    }
+
+    // localStorage.setItem("token", data?.access_token);
+    // fetchUserProfile(data?.access_token);
+
+  };
+
+
+  const fetchUserProfile = async (token) => {
+    const { data, error } = await request("GET", "https://api.escuelajs.co/api/v1/auth/profile", null, token);
+
+    if (error) {
+      setError(error);
+    } else {
+      setUser(data);
+    }
+  };
+
 
   const handleChange = (e) => {
     setErrors({ email: "", password: "" });
@@ -69,17 +98,18 @@ const Login = () => {
         storedUser.email === formData.email &&
         storedUser.password === formData.password
       ) {
-        // alert("Login successful!");
       } else {
-        // alert("invalid email or password");
       }
     } else {
-      // alert("No user found, Sign up first.");
     }
   };
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
+
+  if(loading){
+    return <div>Loading</div>
+  }
   return (
     <>
       <div className="mb-2">

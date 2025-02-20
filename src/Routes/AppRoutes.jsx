@@ -15,11 +15,15 @@ import { Routes, Route } from "react-router-dom";
 
 import LoginLayout from "../Layout/LoginLayout/LoginLayout";
 import NewPassword from "../Layout/LoginLayout/NewPassword";
+import ProductList from "../Layout/ProductLayout/Collection";
+import ProductLayout from "../Layout/ProductLayout/ProductLayout";
+import Collection from "../Layout/ProductLayout/Collection";
 
 const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<LoginLayout />}>
+        {/* <Route path="login" element={<ProductList />} />- */}
         <Route path="login" element={<Login />} />-
         <Route path="signup" element={<Signup />} />-
         <Route path="forgotpassword" element={<ForgotPassword />} />-
@@ -35,9 +39,10 @@ const AppRoutes = () => {
         <Route path="leaves/add-leaves" element={<AddLeaves />} />
         <Route path="change-password" element={<ChangePassword />} />
         <Route path="profile" element={<Profile />} />
-         
-         
+      </Route>
 
+      <Route path="/" element={<ProductLayout />}>
+        <Route path="product-list" element={<Collection />} />
       </Route>
     </Routes>
   );
