@@ -7,9 +7,9 @@ const Dashboard = () => {
   
   return (
     <div>
-      <Bootstrap/>
-      {/* <Welcome/> */}
-      {/* <UserData/> */}
+      {/* <Bootstrap/> */}
+      <Welcome/>
+      <UserData/>
     </div>
   )
 }

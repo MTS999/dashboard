@@ -13,10 +13,10 @@ const Bootstrap = () => {
             />
           </div>
           <div class="col">
-            <div class="p-3 bg-secondary text-white">One of three columns</div>
+            <div class="d-flex p-3 bg-secondary text-white">One of three columns</div>
           </div>
           <div class="col">
-            <div class="p-3 bg-primary text-white">One of three columns</div>
+            <div class="p-3 bg-primary text-white">One sdvdsvsdvsdvsdvdsvdsvdsvdsvof three columns</div>
           </div>
 
           <div class="col">

@@ -27,8 +27,8 @@ const leaveData = [
 const LeaveData = () => {
   return (
     <>
-      <div className="container">
-        <div className="row d-flex  flex-wrap justify-content-around  gap-4 mb-4">
+      <div className="container-fluid p-0">
+        <div className="row row-cols-1 row-cols-md-3 row-cols-lg-3 g-4">
           {
             leaveData.map((data,index)=>(
 

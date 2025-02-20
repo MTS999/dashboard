@@ -45,26 +45,26 @@ const UserData = () => {
   return (
     <>
       <div className="containor-fluid">
-        <div className="row ">
-          <div className="col-9 d-flex  flex-wrap justify-content-around  gap-4">
-                {userDataItems.map((userData, index) => (
-                  <UserDataCard
-                    key={index}
-                    backgroundColor={userData.backgroundColor}
-                    icon={userData.icon}
-                    value={userData.value}
-                    label={userData.label}
-                  />
-                ))}
+        <div className="row gap-3 gap-lg-0">
+          <div className="col-12 col-lg-9 ">
+            <div className="row row-cols-1  row-cols-lg-3 row-cols-xl-3 g-4">
+              {userDataItems.map((userData, index) => (
+                <UserDataCard
+                  key={index}
+                  backgroundColor={userData.backgroundColor}
+                  icon={userData.icon}
+                  value={userData.value}
+                  label={userData.label}
+                />
+              ))}
+            </div>
           </div>
-          <div className="col-3 rounded-3 flex-center flex-column  bg-info ">
+          <div className="col-12 col-lg-3 rounded-3 flex-center flex-column  bg-info  ">
             <p className="fs-5 fw-bolder">Progress </p>
             <p className="fs-6 fw-bolder">your monthly Progress </p>
-
           </div>
         </div>
       </div>
-   
     </>
   );
 };
