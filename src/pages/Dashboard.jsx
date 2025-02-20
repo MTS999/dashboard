@@ -1,15 +1,17 @@
 import React from 'react'
 import Welcome from '../components/Dashboard/Welcome'
 import UserData from '../components/Dashboard/UserData'
-import Bootstrap from '../components/Dashboard/Bootstrap'
+import GenericModal from '../components/GeneralComponents/GenericModal'
+
+
+
 const Dashboard = () => {
 
-  
   return (
     <div>
-      {/* <Bootstrap/> */}
-      <Welcome/>
-      <UserData/>
+      <GenericModal/>
+      {/* <Welcome/> */}
+      {/* <UserData/> */}
     </div>
   )
 }

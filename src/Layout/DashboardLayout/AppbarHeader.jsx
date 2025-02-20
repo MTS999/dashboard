@@ -10,6 +10,9 @@ const AppBarNav = ({handleDrawerToggle}) => {
     const drawerWidth = 280;
 
   return (
+    <>
+    {/* <CssBaseline /> */}
+
    <AppBar
         elevation={0}
         position="fixed"
@@ -34,6 +37,7 @@ const AppBarNav = ({handleDrawerToggle}) => {
           </Stack>
         </Toolbar>
       </AppBar>
+    </>
   )
 }
 

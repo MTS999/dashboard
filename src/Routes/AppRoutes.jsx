@@ -3,7 +3,14 @@ import Signup from "../Layout/LoginLayout/Signup";
 import ForgotPassword from "../Layout/LoginLayout/ForgotPassword";
 import VerifyCode from "../Layout/LoginLayout/VerifyCode";
 import MainLayout from "../Layout/DashboardLayout/DashboardLayout";
-import { Dashboard, MyAttendence, Leaves, AddLeaves,ChangePassword, Profile } from "../pages";
+import {
+  Dashboard,
+  MyAttendence,
+  Leaves,
+  AddLeaves,
+  ChangePassword,
+  Profile,
+} from "../pages";
 import { Routes, Route } from "react-router-dom";
 
 import LoginLayout from "../Layout/LoginLayout/LoginLayout";
@@ -26,11 +33,12 @@ const AppRoutes = () => {
         <Route path="leaves" element={<Leaves />} />
 
         <Route path="leaves/add-leaves" element={<AddLeaves />} />
-        <Route path="change-password"  element={<ChangePassword/>}/>
-        <Route path="profile"  element={<Profile/>}/>
+        <Route path="change-password" element={<ChangePassword />} />
+        <Route path="profile" element={<Profile />} />
+         
+         
+
       </Route>
-
-
     </Routes>
   );
 };
