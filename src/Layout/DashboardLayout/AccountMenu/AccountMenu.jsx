@@ -52,25 +52,34 @@ export default function AccountMenu() {
   // for POP-UP Model
 
   const [openModal, setOpenModal] = useState(false);
+  const [modalContent, setModalContent] = useState(null);
   const [modalTitle, setModalTitle] = useState("");
   const openChangePassword = () => {
     setAnchorEl(null);
     setModalTitle("Change Password");
+    setModalContent(<ChangePassword />);
     setOpenModal(true);
   };
   const handleModalClose = () => {
     setOpenModal(false);
   };
 
+  const handleDrawerCompoenent=()=>{
+    
+  }
+
   // For Drawer
 
-  const [openDrawer, setOpenDrawer] = useState(false);
+  const [openDrawer, setOpenDrawer] = useState("");
+  const [currentComponent, setCurrentComponent] = useState(null);
 
   const handleOpenDrawer = (component) => {
     setAnchorEl(null);
 
-    setOpenDrawer(true);
+    setCurrentComponent(component);
+    setOpenDrawer("password");
   };
+
   return (
     <div>
       <Button
@@ -180,11 +189,11 @@ export default function AccountMenu() {
         onClose={handleModalClose}
         title={modalTitle}
       >
-        {<ChangePassword/>}
+        {modalContent}
       </GenericModal>
 
-      <SidebarDrawer open={openDrawer} onClose={() => setOpenDrawer(false)}>
-        {<Profile/>}
+      <SidebarDrawer open={Boolean(openDrawer)} onClose={() => setOpenDrawer(false)}>
+        {handleDrawerCompoenent}
       </SidebarDrawer>
     </div>
   );

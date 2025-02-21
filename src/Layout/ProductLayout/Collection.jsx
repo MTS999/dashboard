@@ -22,30 +22,31 @@ const Collection = () => {
   const [filerproduct, setFilterProduct] = useState([]);
   const { request, loading } = useFetch();
   const [error, setError] = useState(null);
+  const [page, setPage] = useState(0);
 
   const navigate = useNavigate();
 
+  const fetchProducts = async () => {
+    const response = await request(
+      "GET",
+      // "https://api.escuelajs.co/api/v1/products"
+      `https://api.escuelajs.co/api/v1/products?offset=${page}&limit=10`
+    );
+    if (response.data) {
+      console.log(response);
+
+      setProducts(response.data);
+      setFilterProduct(response.data);
+    } else {
+      setError(response.error);
+    }
+  };
+
+  console.log(products);
+
   useEffect(() => {
-    const fetchProducts = async () => {
-      const response = await request(
-        "GET",
-        "https://api.escuelajs.co/api/v1/products"
-        // "https://api.escuelajs.co/api/v1/products?offset=0&limit=10"
-      );
-      if (response.data) {
-        console.log(response);
-
-        setProducts(response.data);
-        setFilterProduct(response.data);
-      } else {
-        setError(response.error);
-      }
-    };
-
-    console.log(products);
-
     fetchProducts();
-  }, []);
+  }, [page]);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p style={{ color: "red" }}>Error: {error}</p>;
@@ -76,7 +77,7 @@ const Collection = () => {
               {/* <h2>ALL Collection</h2> */}
             </div>
           </div>
-          <div className="row row-cols-3 g-4">
+          {/* <div className="row row-cols-3 g-4">
             {filerproduct.length > 0 &&
               filerproduct.map((product, index) => (
                 <Link to={`/collection-item/${product.id}`}>
@@ -91,10 +92,10 @@ const Collection = () => {
                   </div>
                 </Link>
               ))}
-          </div>
+          </div> */}
         </div>
       </div>
-      <Table filerproduct={filerproduct} />
+      <Table filerproduct={filerproduct} page={page} setPage={setPage} />
     </>
   );
 };

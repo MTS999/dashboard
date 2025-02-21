@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import ReactTable from "@meta-dev-zone/react-table";
 
-
-
-function Table({filerproduct}) {
+function Table({ filerproduct ,setPage, page}) {
   const [selected, setSelected] = useState([]);
   const [users, setUsers] = useState([]);
+  console.log(filerproduct, "i am filter");
 
-  console.log(filerproduct,"i am filter");
-  
+  const handleChangePage = (newPage) => {
+    setPage(newPage);
+  };
+
   const handleEdit = (value) => {
     console.log(value, "---value");
   };
@@ -79,7 +80,6 @@ function Table({filerproduct}) {
                 <h4>Price :</h4>
                 <p>{row.price}</p>
               </div>
-            
             </div>
           ),
         };
@@ -103,12 +103,9 @@ function Table({filerproduct}) {
     { id: "status", label: "Status", type: "row_status" },
   ];
 
-
   useEffect(() => {
     getData();
   }, [filerproduct]);
-
- 
 
   return (
     <div className="Table">
@@ -126,13 +123,13 @@ function Table({filerproduct}) {
         //   setSearchText: setSearchText,
         //   handleSubmit: searchFunction,
         // }}
-        // custom_pagination={{
-        //   total_count: totalCount,
-        //   rows_per_page: rowsPerPage,
-        //   page: page,
-        //   total_pages: totalPages,
-        //   handleChangePage: handleChangePage,
-        // }}
+        custom_pagination={{
+          total_count: 80,
+          rows_per_page: 10,
+          page: page,
+          total_pages: 80,
+          handleChangePage: handleChangePage,
+        }}
         class_name=""
         theme_config={{
           background: "#1d1c1d",
