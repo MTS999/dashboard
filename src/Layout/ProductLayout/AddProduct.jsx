@@ -15,7 +15,6 @@ const AddProduct = () => {
     images: ["https://placeimg.com/640/480/any2"], // Array with one empty string
   });
 
-
   const addProducts = async () => {
     const response = await request(
       "POST",
@@ -23,18 +22,15 @@ const AddProduct = () => {
       productData
     );
     if (response.data) {
-    //   setProducts(response.data);
-    console.log(response.data);
-    if(response.ok){
+      //   setProducts(response.data);
+      console.log(response.data);
+      if (response.ok) {
         console.log("dfdfd");
-        
-    }
-    
+      }
     } else {
       setError(response.error);
     }
   };
-
 
   // Handle Input Change
   const handleChange = (e) => {
@@ -44,7 +40,13 @@ const AddProduct = () => {
       [name]: value,
     });
   };
-
+  const handleEditorChange = (content) => {
+    console.log("Editor Content:", content);
+    setProductData((prev) => ({
+      ...prev,
+      description: content,
+    }));
+  };
   const handleImageChange = (e) => {
     setProductData({
       ...productData,
@@ -55,8 +57,7 @@ const AddProduct = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Product Data:", productData);
-    addProducts()
-    
+    addProducts();
   };
   if (loading) return <p>Loading...</p>;
   if (error) return <p style={{ color: "red" }}>Error: {error}</p>;
@@ -121,15 +122,20 @@ const AddProduct = () => {
                 required
               />
             </div>
+          </div>
+          <div className="row mt-5">
             <div className="col">
-            
-                    <ReactEditor />
+              <ReactEditor 
+              
+              value={productData.description}
+              onChange={handleEditorChange}
 
+              />
             </div>
           </div>
 
           <div className="row text-center">
-            <div className="col text-end ">
+            <div className="col text-end mt-4">
               <button
                 type="submit"
                 className="theme--button px-3 py-2 rounded-2"

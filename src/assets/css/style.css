@@ -22,6 +22,7 @@ html {
   /* font size */
 
   --small-text-12: 12px;
+  --small-text-14: 14px;
 }
 /* colors */
 .primary-color {
@@ -166,6 +167,9 @@ img {
   height: 110px;
 }
 .text-12 {
+  font-size: var(--small-text-14);
+}
+.text--12 {
   font-size: var(--small-text-12);
 }
 

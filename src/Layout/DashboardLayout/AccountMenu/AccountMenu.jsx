@@ -3,7 +3,7 @@ import { useState } from "react";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Avatar } from "@mui/material";
 // import AccountMenuItemsData from "./config";
 // import AccountMenuItems from "./AccountMenuItems";
@@ -31,17 +31,17 @@ export default function AccountMenu() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const location = useLocation();
-  const formatPathToTitle = (path) => {
-    const firstSegment = path.split("/")[1];
-    if (!firstSegment) return "";
-    return firstSegment
-      .split("-")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ");
-  };
+  // const location = useLocation();
+  // const formatPathToTitle = (path) => {
+  //   const firstSegment = path.split("/")[1];
+  //   if (!firstSegment) return "";
+  //   return firstSegment
+  //     .split("-")
+  //     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+  //     .join(" ");
+  // };
 
-  const label = formatPathToTitle(location.pathname);
+  // const label = formatPathToTitle(location.pathname);
   const handleLogout = () => {
     setAnchorEl(null);
     localStorage.removeItem("userData");
@@ -52,12 +52,10 @@ export default function AccountMenu() {
   // for POP-UP Model
 
   const [openModal, setOpenModal] = useState(false);
-  const [modalContent, setModalContent] = useState(null);
   const [modalTitle, setModalTitle] = useState("");
   const openChangePassword = () => {
     setAnchorEl(null);
     setModalTitle("Change Password");
-    setModalContent(<ChangePassword />);
     setOpenModal(true);
   };
   const handleModalClose = () => {
@@ -67,12 +65,10 @@ export default function AccountMenu() {
   // For Drawer
 
   const [openDrawer, setOpenDrawer] = useState(false);
-  const [currentComponent, setCurrentComponent] = useState(null);
 
   const handleOpenDrawer = (component) => {
     setAnchorEl(null);
 
-    setCurrentComponent(component);
     setOpenDrawer(true);
   };
   return (
@@ -85,6 +81,7 @@ export default function AccountMenu() {
         onClick={handleClick}
       >
         {/* < MoreVertIcon  /> */}
+
         <Avatar sx={{ backgroundColor: "primary.main", marginLeft: "auto" }}>
           A
         </Avatar>
@@ -97,7 +94,7 @@ export default function AccountMenu() {
         MenuListProps={{
           "aria-labelledby": "basic-button",
           sx: {
-            // padding: "10px",
+            padding: "14px",
           },
         }}
       >
@@ -136,7 +133,7 @@ export default function AccountMenu() {
               color: "#e5719d",
             }}
           />
-          <p className="text-center flex-center ms-2 mb-0 text-12">
+          <p className="text-center flex-center ms-2 mb-0 text--12">
             User Profile
           </p>
         </MenuItem>
@@ -155,7 +152,7 @@ export default function AccountMenu() {
               color: "#76D297",
             }}
           />
-          <p className="text-center flex-center ms-2 mb-0 text-12">
+          <p className="text-center flex-center ms-2 mb-0 text--12">
             Change Passowrd
           </p>
         </MenuItem>
@@ -175,7 +172,7 @@ export default function AccountMenu() {
               color: "#256699",
             }}
           />
-          <p className="text-center flex-center ms-2 mb-0 text-12">Logout</p>
+          <p className="text-center flex-center ms-2 mb-0 text--12">Logout</p>
         </MenuItem>
       </Menu>
       <GenericModal
@@ -183,11 +180,11 @@ export default function AccountMenu() {
         onClose={handleModalClose}
         title={modalTitle}
       >
-        {modalContent}
+        {<ChangePassword/>}
       </GenericModal>
 
       <SidebarDrawer open={openDrawer} onClose={() => setOpenDrawer(false)}>
-        {currentComponent}
+        {<Profile/>}
       </SidebarDrawer>
     </div>
   );

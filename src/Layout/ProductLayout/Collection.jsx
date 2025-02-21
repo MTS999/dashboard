@@ -6,8 +6,20 @@ import { Link, useNavigate } from "react-router-dom";
 import AddIcon from "@mui/icons-material/Add";
 import Table from "./Table";
 import FilterData from "./FilterData";
+
 const Collection = () => {
+  const uniqueCategories = [
+    ...new Set(
+      productData
+        .filter((item) => item.category) // Ensure item has a category
+        .map((item) => item.category.name) // Extract category name
+    ),
+  ];
+
+  console.log(uniqueCategories);
+
   const [products, setProducts] = useState([]);
+  const [filerproduct, setFilterProduct] = useState([]);
   const { request, loading } = useFetch();
   const [error, setError] = useState(null);
 
@@ -24,6 +36,7 @@ const Collection = () => {
         console.log(response);
 
         setProducts(response.data);
+        setFilterProduct(response.data);
       } else {
         setError(response.error);
       }
@@ -38,7 +51,6 @@ const Collection = () => {
   if (error) return <p style={{ color: "red" }}>Error: {error}</p>;
   return (
     <>
-          <FilterData CollectionData={products} setProducts={setProducts} />
       <div className="row">
         <div className="col text-end ">
           <button
@@ -51,25 +63,30 @@ const Collection = () => {
         </div>
       </div>
       <div className="container-fluid d-flex mt-3">
-        <div className="   width-15 ">filters</div>
+        <div className="   width-15 ">
+          <FilterData
+            CollectionData={products}
+            setFilterProduct={setFilterProduct}
+          />
+        </div>
         <div className=" container   w-100">
           <div className="row">
             <div className="flex-center justify-content-between">
-              <h2>ALL Collection</h2>
+              <h2>ALL Collection ({filerproduct.length})</h2>
               {/* <h2>ALL Collection</h2> */}
             </div>
           </div>
           <div className="row row-cols-3 g-4">
-            {products.length > 0 &&
-              products.map((product, index) => (
+            {filerproduct.length > 0 &&
+              filerproduct.map((product, index) => (
                 <Link to={`/collection-item/${product.id}`}>
                   <div className="col  ">
                     <div className="p-3 box-shadow rounded-3 height-350">
                       <div className="product-img mb-3">
                         <img src={product.images} alt={product.title} />
                       </div>
-                      <div className="text-dark">{product.title}</div>
-                      <h6 className="fw-bolder text-dark">{`$${product.price}`}</h6>
+                      <div className="text-dark mt-2">{product.title}</div>
+                      <h6 className="fw-bolder text-dark mt-2">{`$${product.price}`}</h6>
                     </div>
                   </div>
                 </Link>
@@ -77,7 +94,7 @@ const Collection = () => {
           </div>
         </div>
       </div>
-      {/* <Table CollectionData={products} /> */}
+      <Table filerproduct={filerproduct} />
     </>
   );
 };
