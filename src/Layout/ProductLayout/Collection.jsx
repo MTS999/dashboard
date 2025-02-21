@@ -1,41 +1,73 @@
-import { useState } from "react";
-import axios from "axios";
-
+import React, { useState } from "react";
+import useFetch from "../../hooks/useFetch";
+import { useEffect } from "react";
+import productData from "./data";
+import { Link, useNavigate } from "react-router-dom";
+import AddIcon from '@mui/icons-material/Add';
+import Table from "./Table";
 const Collection = () => {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const { request, loading } = useFetch();
   const [error, setError] = useState(null);
+  const navigate=useNavigate()
 
-  const fetchProducts = async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const response = await axios.get("https://api.escuelajs.co/api/v1/products/4");
-      setProducts(response.data);
-    } catch (err) {
-      setError("Error fetching products.");
-    }
-    setLoading(false);
-  };
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const response = await request(
+        "GET",
+        // "https://api.escuelajs.co/api/v1/products"
+        "https://api.escuelajs.co/api/v1/products?offset=0&limit=10"
+      );
+      if (response.data) {
+        setProducts(response.data);
+      } else {
+        setError(response.error);
+      }
+    };
 
-  console.log(products);
-  
+    fetchProducts();
+  }, []);
 
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p style={{ color: "red" }}>Error: {error}</p>;
   return (
-    <div>
-      <button onClick={fetchProducts} disabled={loading}>
-        {loading ? "Loading..." : "Fetch Products"}
-      </button>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-   
-          <p >{products.title}</p>
-      
-      {/* <ul>
-        {products.map((product) => (
-          <li key={product.id}>{product.title}</li>
-        ))}
-      </ul> */}
-    </div>
+    <>
+
+    <Table CollectionItems={products} />
+      <div className="row">
+        <div className="col text-end ">
+          <button onClick={()=>navigate("/add-item")} className="theme--button p-2 ">
+            <AddIcon/>
+             ADD ITEM </button>
+        </div>
+      </div>
+      <div className="container-fluid d-flex mt-3">
+        <div className="   width-15 ">filters</div>
+        <div className=" container   w-100">
+          <div className="row">
+            <div className="flex-center justify-content-between">
+              <h2>ALL Collection</h2>
+              {/* <h2>ALL Collection</h2> */}
+            </div>
+          </div>
+          <div className="row row-cols-3 g-4">
+            {products.map((product, index) => (
+              <Link to={`/collection-item/${product.id}`}>
+                <div className="col  ">
+                  <div className="p-3 box-shadow rounded-3 height-350">
+                    <div className="product-img mb-3">
+                      <img src={product.images} alt={product.title} />
+                    </div>
+                    <div className="text-dark">{product.title}</div>
+                    <h6 className="fw-bolder text-dark">{`$${product.price}`}</h6>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

@@ -62,9 +62,15 @@ img {
 }
 
 /* width */
-
+.width-15{
+  width: 15%;
+}
 .max-width--520 {
   max-width: 520px;
+}
+/* height */
+.height-350{
+  height: 350px;
 }
 /* theme styling */
 
@@ -175,4 +181,36 @@ img {
   top: -10px;
   left: 40px;
 }
+
+
+/* // */
+/* product collectoin */
+
+.product-img img{
+  height: 200px;
+  width: 100%;
+  border-radius: 5px;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out; /* Smooth zoom effect */
+
+}
+
+.product-img img:hover {
+  transform: scale(1.06); /* Zooms the image */
+}
+.product-item-img img{
+  height: 60%;
+  width: 80%;
+  border-radius: 5px;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out; /* Smooth zoom effect */
+
+}
+
+.size-button{
+  width: 40px;
+}
+
+
+
 

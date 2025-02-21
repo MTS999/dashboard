@@ -15,10 +15,8 @@ import { Routes, Route } from "react-router-dom";
 
 import LoginLayout from "../Layout/LoginLayout/LoginLayout";
 import NewPassword from "../Layout/LoginLayout/NewPassword";
-import ProductList from "../Layout/ProductLayout/Collection";
-import ProductLayout from "../Layout/ProductLayout/ProductLayout";
-import Collection from "../Layout/ProductLayout/Collection";
 
+import { ProductLayout,Collection,CollectionItem,AddProduct } from "../Layout/ProductLayout";
 const AppRoutes = () => {
   return (
     <Routes>
@@ -42,7 +40,9 @@ const AppRoutes = () => {
       </Route>
 
       <Route path="/" element={<ProductLayout />}>
-        <Route path="product-list" element={<Collection />} />
+        <Route path="collection" element={<Collection />} />
+        <Route path="collection-item/:id" element={<CollectionItem />} />
+        <Route path="add-item" element={<AddProduct />} />
       </Route>
     </Routes>
   );
