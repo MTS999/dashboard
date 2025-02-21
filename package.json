@@ -18,6 +18,7 @@
     "jodit-react": "^5.2.14",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-filter-chips": "^1.0.6",
     "react-router-dom": "^7.1.5",
     "react-scripts": "5.0.1",
     "react-text-editor-kit": "^1.5.3",

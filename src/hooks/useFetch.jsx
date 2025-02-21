@@ -18,12 +18,12 @@ const useFetch = () => {
         data,
         headers,
       });
-       console.log(response);
+      //  console.log(response);
        
       return { data: response.data, error: null };
     } catch (error) {
 
-        console.log(error);
+        // console.log(error);
         
       return {
         data: null,

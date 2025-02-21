@@ -1,40 +1,25 @@
 import React, { useState, useEffect } from "react";
 import ReactTable from "@meta-dev-zone/react-table";
 
-const members = [
-  {
-    _id: 1,
-    name: "John Doe",
-    email: "johndoe@example.com",
-    phoneNumber: "+44 1233 123456",
-    status: true,
-    profileImage:
-      "https://images.unsplash.com/photo-1599566150163-29194dcaad36",
-    address: "123 Main St London WC2N 5DU UK",
-    jobTitle: "Software Engineer",
-    company: "Meta Logix Tech",
-    bio: "John is a skilled software engineer with over 10 years of experience in full-stack development. He enjoys working with the latest technologies and building innovative Tablelications.",
-  },
-  {
-    _id: 2,
-    name: "Jane Smith",
-    email: "janesmith@example.com",
-    phoneNumber: "+1 555 123 4567",
-    status: false,
-    profileImage:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb",
-    address: "456 Oak Ave New York 10001 USA",
-    jobTitle: "Product Manager",
-    company: "Dynamite Lifestyle",
-    bio: "Jane is a seasoned product manager with a passion for bringing ideas to life. She excels at leading cross-functional teams and delivering high-quality products.",
-  },
-  // ... more data
-];
 
-function Table({CollectionData}) {
+
+function Table({CollectionItems}) {
   const [selected, setSelected] = useState([]);
-  const [users, setUsers] = useState(CollectionData);
+  const [users, setUsers] = useState(CollectionItems);
+  // const [searchText, setSearchText] = useState("");
+  // const [page, setPage] = useState(0);
+  // const [rowsPerPage, setRowsPerPage] = useState(1);
+  // const [totalCount, setTotalCount] = useState(0);
+  // const [totalPages, setTotalPages] = useState(2);
 
+  // const handleChangePage = (newPage) => {
+  //   if (newPage == 1) {
+  //     setUsers([members[1]]);
+  //   } else {
+  //     setUsers([members[0]]);
+  //   }
+  //   setPage(newPage);
+  // };
 
   const handleEdit = (value) => {
     console.log(value, "---value");
@@ -54,8 +39,7 @@ function Table({CollectionData}) {
           target: "_blank",
           show_text: "Preview",
         },
-        Picture: {
-          // src: item.images[0],
+        thumbnail: {
           src: item.images[0],
           alt: "Profile Image",
         },
@@ -99,11 +83,11 @@ function Table({CollectionData}) {
             <div className="user">
               <h3>User Info</h3>
               <div className="user-info">
-                <h4>title :</h4>
+                <h4>Name :</h4>
                 <p>{row.title}</p>
               </div>
               <div className="user-info">
-                <h4>Price :</h4>
+                <h4>Email :</h4>
                 <p>{row.price}</p>
               </div>
             
@@ -113,21 +97,14 @@ function Table({CollectionData}) {
       },
     },
     {
-      id: "Picture",
-      label: "Profile Image",
+      id: "thumbnail",
+      label: "Product Image",
       type: "thumbnail",
     },
     { id: "id", label: "ID" },
     { id: "title", label: "Title" },
     { id: "price", label: "Price" },
-    {
-      id: "any",
-      label: "Job Title",
-      renderData: (row) => {
-        return <div>{row.jobTitle}</div>;
-      },
-    },
-    { id: "status", label: "Status", type: "row_status" },
+  
   ];
 
   // const searchFunction = () => {};
@@ -165,7 +142,7 @@ function Table({CollectionData}) {
           color: "#fff",
           iconColor: "#f6bd4b",
         }}
-        is_sticky_header={false}
+        is_sticky_header={true}
         is_hide_footer_pagination={true}
         is_hide_header_pagination={false}
         is_hide_search={false}
