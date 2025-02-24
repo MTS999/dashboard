@@ -71,12 +71,12 @@ export default function AccountMenu() {
   // For Drawer
 
   const [openDrawer, setOpenDrawer] = useState("");
-  const [currentComponent, setCurrentComponent] = useState(null);
+  // const [currentComponent, setCurrentComponent] = useState(null);
 
   const handleOpenDrawer = (component) => {
     setAnchorEl(null);
 
-    setCurrentComponent(component);
+    // setCurrentComponent(component);
     setOpenDrawer("password");
   };
 
@@ -142,7 +142,7 @@ export default function AccountMenu() {
               color: "#e5719d",
             }}
           />
-          <p className="text-center flex-center ms-2 mb-0 text--12">
+          <p className="text-center flex-center ms-2 mb-0 text--14">
             User Profile
           </p>
         </MenuItem>
@@ -161,7 +161,7 @@ export default function AccountMenu() {
               color: "#76D297",
             }}
           />
-          <p className="text-center flex-center ms-2 mb-0 text--12">
+          <p className="text-center flex-center ms-2 mb-0 text--14">
             Change Passowrd
           </p>
         </MenuItem>
@@ -171,7 +171,7 @@ export default function AccountMenu() {
           sx={{
             display: "flex",
             justifyContent: "start",
-            width: "170px",
+            width: "180px",
             mt: "10px",
             minHeight: "32px",
           }}
@@ -181,7 +181,7 @@ export default function AccountMenu() {
               color: "#256699",
             }}
           />
-          <p className="text-center flex-center ms-2 mb-0 text--12">Logout</p>
+          <p className="text-center flex-center ms-2 mb-0 text--14">Logout</p>
         </MenuItem>
       </Menu>
       <GenericModal
