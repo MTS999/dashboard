@@ -6,6 +6,9 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+
+
 
 const NewPassword = () => {
   const [password, setPassword] = useState("");
@@ -48,7 +51,7 @@ const NewPassword = () => {
   const handleSubmit = (e) => {
     navigate("/signup");
     e.preventDefault();
-    if (!validateData()) return;
+    // if (!validateData()) return;
     if (password !== confirmPassword) {
       // alert("Passwords do not match");
       return;
@@ -66,14 +69,6 @@ const NewPassword = () => {
 
     navigate("/login");
   };
-
-  
-  // const togglePasswordVisibility = () => {
-  //   setShowPassword((prev) => !prev);
-  // };
-  // const toggleConfirmPasswordVisibility = () => {
-  //   setShowConfirmPassword((prev) => !prev);
-  // };
 
  
   return (
@@ -131,11 +126,19 @@ const NewPassword = () => {
           }}
         />
        
-       <p className="w-100 text-end m-0">
-          <Link className="content-link" to={"/login"}>
-          Back to Login
-          </Link>
-        </p>
+       <div className="d-flex justify-content-between align-items-center  w-100 ">
+          <div onClick={()=>navigate(-1)}>
+            <IconButton>
+
+            <ArrowBackIcon />
+            </IconButton>
+          </div>
+          <p className="w-100 text-end m-0">
+            <Link className="content-link" to={"/login"}>
+              Back to Login
+            </Link>
+          </p>
+        </div>
         <button className="theme--button w-100" onClick={handleSubmit}>
           Update Password
         </button>

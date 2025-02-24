@@ -1,0 +1,120 @@
+import React, { useState } from "react";
+import Avatar from "@mui/material/Avatar";
+import TextField from "@mui/material/TextField";
+import EditIcon from "@mui/icons-material/Edit";
+import Button from "@mui/material/Button";
+
+const ChangeProfile = () => {
+  const [formData, setFormData] = useState({
+    name: "Taimoor Shahid",
+    email: "taimoorshahidswl@gmail.com",
+    phone: "+03463244071",
+    address: "123 456",
+  });
+
+  // Handle input change
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  
+
+  return (
+    <div className="container-fluid box-shadow p-4 rounded-3" style={{ width: "500px" }}>
+      {/* Profile Picture Section */}
+      <div className="row text-center mb-4">
+        <div className="flex-center">
+          <Avatar sx={{ width: 150, height: 150 }}>T</Avatar>
+        </div>
+      </div>
+
+      {/* Name */}
+      <div className="col mb-3">
+        <div className="box-shadow position-relative p-3 rounded-4">
+          <p className="position-absolute profile-label text-12">Name</p>
+          <div className="d-flex align-items-center">
+            <EditIcon />
+            <TextField
+              fullWidth
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              variant="outlined"
+              size="small"
+              className="ms-2"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Email */}
+      <div className="col mb-3">
+        <div className="box-shadow position-relative p-3 rounded-4">
+          <p className="position-absolute profile-label text-12">Email</p>
+          <div className="d-flex align-items-center">
+            <EditIcon />
+            <TextField
+              fullWidth
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              variant="outlined"
+              size="small"
+              className="ms-2"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Phone */}
+      <div className="col mb-3">
+        <div className="box-shadow position-relative p-3 rounded-4">
+          <p className="position-absolute profile-label text-12">Phone</p>
+          <div className="d-flex align-items-center">
+            <EditIcon />
+            <TextField
+              fullWidth
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              variant="outlined"
+              size="small"
+              className="ms-2"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Address */}
+      <div className="col mb-3">
+        <div className="box-shadow position-relative p-3 rounded-4">
+          <p className="position-absolute profile-label text-12">Address</p>
+          <div className="d-flex align-items-center">
+            <EditIcon />
+            <TextField
+              fullWidth
+              name="address"
+              value={formData.address}
+              onChange={handleChange}
+              variant="outlined"
+              size="small"
+              className="ms-2"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Update Profile Button */}
+      <div className="text-end mt-3">
+        <Button variant="contained" color="primary" onClick={handleUpdate}>
+          Update Profile
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+export default ChangeProfile;

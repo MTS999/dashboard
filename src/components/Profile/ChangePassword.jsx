@@ -5,14 +5,11 @@ import TextField from "@mui/material/TextField";
 const ChangePassword = () => {
   return (
     <>
-    {/* // <div className="container p-4"> */}
-      {/* // <div className="row row-cols-1 g-4"> */}
         <div className="col">
           <TextField
             label="Old Password"
             type="password"
             fullWidth
-            // margin="normal"
           />
         </div>
         <div className="col">

@@ -50,7 +50,7 @@ const ForgotPassword = () => {
           </Link>
         </p>
         <button className="theme--button w-100" onClick={handleSubmit}>
-          RESET MY PASSWORD
+          VERIFY EMAIL
         </button>
       </div>
     </>

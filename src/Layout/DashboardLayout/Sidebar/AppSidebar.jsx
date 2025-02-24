@@ -4,13 +4,6 @@ import { metaLogixLogo } from "../../../assets";
 import SidebarItems from "./SidebarItems";
 import menuItems from "./config";
 
-// const menuItems = [
-//   { to: "/dashboard", icon: DashboardIcon },
-//   { to: "/my-attendence", icon: TimeToLeaveIcon },
-//   { to: "/leaves", icon: HailIcon },
-// ];
-
-// menuItems=[]
 const SideBar = () => {
   return (
     <div>

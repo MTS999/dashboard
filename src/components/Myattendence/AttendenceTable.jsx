@@ -28,6 +28,8 @@ const columns = [
 ];
 
 const AttendenceTable = () => {
+  const start=performance.now()
+
   const [status, setStatus] = useState("");
   const [dateFrom, setDateFrom] = useState("");
   const [dateTo, setDateTo] = useState("");
@@ -235,6 +237,8 @@ const AttendenceTable = () => {
           </div>
         </div>
       </div>
+
+      {performance.now()-start}
     </>
   );
 };

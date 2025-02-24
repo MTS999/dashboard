@@ -23,6 +23,8 @@ html {
 
   --small-text-12: 12px;
   --small-text-14: 14px;
+
+
 }
 /* colors */
 .primary-color {
@@ -68,6 +70,10 @@ img {
 }
 .max-width--520 {
   max-width: 520px;
+}
+
+.width--500{
+   width: 500px;
 }
 /* height */
 .height-350{
@@ -218,3 +224,23 @@ img {
 
 
 
+/* // Account menu */
+
+
+.MuiAvatar-circular.menu-avatar {
+  color: var(--white-color) ;
+  background-color: var(--primary-color);
+}
+
+/* Change Password  */
+
+.custom-avatar{
+  width: 150px !important;
+  height: 150px !important;
+  background-color: var(--primary-color) !important;
+}
+
+
+.MuiSvgIcon-root.large-camera-icon {
+  font-size: 35px;
+}

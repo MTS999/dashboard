@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import IconButton from '@mui/material/IconButton';
+// or
 const VerifyCode = () => {
   const navigate = useNavigate();
   const [code, setCode] = useState(["", "", "", "", "", ""]);
@@ -47,8 +49,6 @@ const VerifyCode = () => {
 
   return (
     <>
-     
-
       <div className="mb-2">
         <h4 className="fs-2 fw-normal">Enter 6-Digit Code</h4>
 
@@ -69,11 +69,19 @@ const VerifyCode = () => {
             />
           ))}
         </div>
-        <p className="w-100 text-end m-0">
-          <Link className="content-link" to={"/login"}>
-          Back to Login
-          </Link>
-        </p>
+        <div className="d-flex justify-content-between align-items-center  w-100 ">
+          <div onClick={()=>navigate(-1)}>
+            <IconButton>
+
+            <ArrowBackIcon />
+            </IconButton>
+          </div>
+          <p className="w-100 text-end m-0">
+            <Link className="content-link" to={"/login"}>
+              Back to Login
+            </Link>
+          </p>
+        </div>
         <button className="theme--button w-100" onClick={handleSubmit}>
           SUBMIT
         </button>

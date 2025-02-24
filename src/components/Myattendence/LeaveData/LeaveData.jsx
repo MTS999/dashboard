@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import LeaveDataItem from "./LeaveDataItem";
 import leaveData from "./config";
-
+ 
 
 const LeaveData = () => {
+  // const [start,setStart]=useState(performance.now())
+  // useEffect(() => {
+    
+  //    setStart(performance.now()-start)
+
+  // }, [])
+  
   return (
     <>
       <div className="container-fluid p-0">
@@ -21,6 +28,10 @@ const LeaveData = () => {
           }
         </div>
       </div>
+{/* 
+      <h2>
+        {start}
+      </h2> */}
     </>
   );
 };

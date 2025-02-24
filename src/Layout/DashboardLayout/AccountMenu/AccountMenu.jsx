@@ -5,24 +5,27 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { useNavigate } from "react-router-dom";
 import { Avatar } from "@mui/material";
-// import AccountMenuItemsData from "./config";
-// import AccountMenuItems from "./AccountMenuItems";
-import { useLocation } from "react-router-dom";
-// import LoginIcon from "@mui/icons-material/Login";
-import AccountBoxIcon from "@mui/icons-material/AccountBox";
-// import AccessibilityIcon from "@mui/icons-material/Accessibility";
-import KeyIcon from "@mui/icons-material/Key";
-import LogoutIcon from "@mui/icons-material/Logout";
+import AccountMenuItemsData from "./config";
 import ChangePassword from "../../../components/Profile/ChangePassword";
 import GenericModal from "../../../components/GeneralComponents/GenericModal";
-
 import SidebarDrawer from "../../../components/GeneralComponents/SidebarDrawer";
-import Profile from "../../../components/Profile/Profile";
+import ChangeProfile from "../../../components/Profile/ChangeProfile";
+
 
 export default function AccountMenu() {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+
+  // model data
+  const [openModal, setOpenModal] = useState(false);
+  const [modelContent, setModelContent] = useState(null);
+  const [modalTitle, setModalTitle] = useState("");
+
+  // drawer data
+
+  const [openDrawer, setOpenDrawer] = useState(false);
+  const [drawerType, setDrawerType] = useState("");
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -32,53 +35,76 @@ export default function AccountMenu() {
     setAnchorEl(null);
   };
   // const location = useLocation();
-  // const formatPathToTitle = (path) => {
-  //   const firstSegment = path.split("/")[1];
-  //   if (!firstSegment) return "";
-  //   return firstSegment
-  //     .split("-")
-  //     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-  //     .join(" ");
-  // };
+  const formatPathToTitle = (path) => {
+    return path
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  };
 
-  // const label = formatPathToTitle(location.pathname);
+  const handleMenuClick = (label) => {
+    if (label === "logout") {
+      handleLogout();
+    } else if (label === "change-password") {
+      openModalWithType("Change Password", "change-password");
+    } else if (label === "change-profile") {
+      openDrawerWithType("change-profile");
+    }
+  };
+
   const handleLogout = () => {
     setAnchorEl(null);
     localStorage.removeItem("userData");
     // 🔹 Redirect to login or signup page
-    navigate("/signup");
+    navigate("/login");
   };
 
-  // for POP-UP Model
-
-  const [openModal, setOpenModal] = useState(false);
-  const [modalContent, setModalContent] = useState(null);
-  const [modalTitle, setModalTitle] = useState("");
-  const openChangePassword = () => {
-    setAnchorEl(null);
-    setModalTitle("Change Password");
-    setModalContent(<ChangePassword />);
-    setOpenModal(true);
-  };
   const handleModalClose = () => {
     setOpenModal(false);
   };
 
-  const handleDrawerCompoenent=()=>{
-    
-  }
+ 
 
-  // For Drawer
+  // model functionnality
 
-  const [openDrawer, setOpenDrawer] = useState("");
-  // const [currentComponent, setCurrentComponent] = useState(null);
-
-  const handleOpenDrawer = (component) => {
+  const openModalWithType = (title, type) => {
     setAnchorEl(null);
-
-    // setCurrentComponent(component);
-    setOpenDrawer("password");
+    setModelContent(type);
+    setModalTitle(title);
+    setOpenModal(true);
   };
+  const renderModalContent = () => {
+    switch (modelContent) {
+      case "change-password":
+        return <ChangePassword />;
+
+      default:
+        return null;
+    }
+  };
+
+  // Drawer functionality
+
+  // Open drawer dynamically based on type
+  const openDrawerWithType = (type) => {
+    setAnchorEl(null);
+    setDrawerType(type);
+    setOpenDrawer(true);
+  };
+  const renderDrawerContent = () => {
+    console.log("mtssssss");
+    
+    switch (drawerType) {
+      case "change-profile":
+        return <ChangeProfile />;
+
+      default:
+        return null;
+    }
+  };
+
+
+
 
   return (
     <div>
@@ -89,11 +115,7 @@ export default function AccountMenu() {
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
       >
-        {/* < MoreVertIcon  /> */}
-
-        <Avatar sx={{ backgroundColor: "primary.main", marginLeft: "auto" }}>
-          A
-        </Avatar>
+        <Avatar className="menu-avatar ">A</Avatar>
       </Button>
       <Menu
         id="basic-menu"
@@ -102,98 +124,30 @@ export default function AccountMenu() {
         onClose={handleClose}
         MenuListProps={{
           "aria-labelledby": "basic-button",
-          sx: {
-            padding: "14px",
-          },
         }}
       >
-        {/* {AccountMenuItemsData.map((item, index) => (
-          <MenuItem
-            key={index}
-            // to={item.to}
-            onClick={() => navigate(item.to)}
-            sx={{
-              display: "flex",
-              justifyContent: "start",
-              minHeight: "32px",
-            }}
-          >
+        {AccountMenuItemsData.map((item, index) => (
+          <MenuItem key={index} onClick={() => handleMenuClick(item.to)}>
             <item.icon sx={{ color: item.color }} />
             <p className="text-center flex-center ms-2 mb-0 text-12">
-              {" "}
               {formatPathToTitle(item.to)}
             </p>
           </MenuItem>
-        ))} */}
-
-        <MenuItem
-          onClick={() => handleOpenDrawer(<Profile />)}
-          sx={{
-            display: "flex",
-            justifyContent: "start",
-            // padding:"0px",
-            width: "170px",
-            mt: "10px",
-            minHeight: "32px",
-          }}
-        >
-          <AccountBoxIcon
-            sx={{
-              color: "#e5719d",
-            }}
-          />
-          <p className="text-center flex-center ms-2 mb-0 text--14">
-            User Profile
-          </p>
-        </MenuItem>
-        <MenuItem
-          onClick={openChangePassword}
-          sx={{
-            display: "flex",
-            justifyContent: "start",
-            width: "170px",
-            mt: "10px",
-            minHeight: "32px",
-          }}
-        >
-          <KeyIcon
-            sx={{
-              color: "#76D297",
-            }}
-          />
-          <p className="text-center flex-center ms-2 mb-0 text--14">
-            Change Passowrd
-          </p>
-        </MenuItem>
-
-        <MenuItem
-          onClick={handleLogout}
-          sx={{
-            display: "flex",
-            justifyContent: "start",
-            width: "180px",
-            mt: "10px",
-            minHeight: "32px",
-          }}
-        >
-          <LogoutIcon
-            sx={{
-              color: "#256699",
-            }}
-          />
-          <p className="text-center flex-center ms-2 mb-0 text--14">Logout</p>
-        </MenuItem>
+        ))}
       </Menu>
       <GenericModal
         open={openModal}
         onClose={handleModalClose}
         title={modalTitle}
       >
-        {modalContent}
+        {renderModalContent()}
       </GenericModal>
 
-      <SidebarDrawer open={Boolean(openDrawer)} onClose={() => setOpenDrawer(false)}>
-        {handleDrawerCompoenent}
+      <SidebarDrawer
+        open={Boolean(openDrawer)}
+        onClose={() => setOpenDrawer(false)}
+      >
+        {renderDrawerContent()}
       </SidebarDrawer>
     </div>
   );
