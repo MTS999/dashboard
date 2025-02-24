@@ -1,90 +1,88 @@
 import React from "react";
-import Typography from "@mui/material/Typography";
 import { useState, useEffect } from "react";
-import Paper from "@mui/material/Paper";
-import TableContainer from "@mui/material/TableContainer";
-import {
-  TextField,
-  MenuItem,
-  Table,
-  TableHead,
-  TableBody,
-  TableRow,
-  TableCell,
-  TablePagination,
-  Chip,
-  Box,
-  IconButton,
-} from "@mui/material";
+import { TextField, MenuItem, IconButton } from "@mui/material";
 import attendanceData from "../../utils/attendence.json";
 import RotateLeftSharpIcon from "@mui/icons-material/RotateLeftSharp";
-const columns = [
-  { id: "workingDays", label: "Working Days", minWidth: 140, align: "left" },
-  { id: "date", label: "Date", minWidth: 170, align: "left" },
-  { id: "checkIn", label: "Check In", minWidth: 170, align: "left" },
-  { id: "checkOut", label: "Check Out", minWidth: 170, align: "left" },
-  { id: "late", label: "Late (min)", minWidth: 170, align: "left" },
-  { id: "status", label: "Status", minWidth: 170, align: "center" },
-];
+import Table from "./Table";
+import { useCallback } from "react";
 
 const AttendenceTable = () => {
-  const start=performance.now()
-
   const [status, setStatus] = useState("");
   const [dateFrom, setDateFrom] = useState("");
   const [dateTo, setDateTo] = useState("");
   const [filteredData, setFilteredData] = useState(attendanceData);
-
+  // const [page, setPage] = useState(0);
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
 
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
+  // const setInitialDates = () => {
+  //   const today = new Date();
 
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
-  };
+  //   // Calculate the first day of the current month
+  //   const firstDay = new Date(today.getFullYear(), today.getMonth(), 1);
+  //   // Calculate the last day of the current month
+  //   const lastDay = new Date(today.getFullYear(), today.getMonth() + 1, 0);
 
-  const handleFilter = (e) => {
-    e.preventDefault();
-    console.log({ status, dateFrom, dateTo });
+  //   // Format dates to YYYY-MM-DD
+  //   const formatDate = (date) => {
+  //     const offsetDate = new Date(
+  //       date.getTime() - date.getTimezoneOffset() * 60000
+  //     );
+  //     return offsetDate.toISOString().split("T")[0];
+  //   };
 
-    const start = new Date(dateFrom);
-    const end = new Date(dateTo);
+  //   // Set the formatted dates
+  //   setDateFrom(formatDate(firstDay));
+  //   setDateTo(formatDate(lastDay));
+  // };
 
-    const filtered = attendanceData.filter((item) => {
-      const itemDate = new Date(item.date);
 
-      return itemDate >= start && itemDate <= end;
-    });
-
-    setFilteredData(filtered);
-  };
-  const setInitialDates = () => {
+  const setInitialDates = useCallback(() => {
     const today = new Date();
-
-    // Calculate the first day of the current month
     const firstDay = new Date(today.getFullYear(), today.getMonth(), 1);
-    // Calculate the last day of the current month
     const lastDay = new Date(today.getFullYear(), today.getMonth() + 1, 0);
-
-    // Format dates to YYYY-MM-DD
+  
     const formatDate = (date) => {
-      const offsetDate = new Date(
-        date.getTime() - date.getTimezoneOffset() * 60000
-      );
+      const offsetDate = new Date(date.getTime() - date.getTimezoneOffset() * 60000);
       return offsetDate.toISOString().split("T")[0];
     };
-
-    // Set the formatted dates
+  
     setDateFrom(formatDate(firstDay));
     setDateTo(formatDate(lastDay));
-  };
+  }, []); // No dependencies
+  
+  // const handleFilter = () => {
+  //   console.log({ status, dateFrom, dateTo });
+
+  //   const start = new Date(dateFrom);
+  //   const end = new Date(dateTo);
+
+  //   const filtered = attendanceData.filter((item) => {
+  //     const itemDate = new Date(item.date);
+
+  //     return itemDate >= start && itemDate <= end;
+  //   });
+
+  //   setFilteredData(filtered);
+  // };
+
+
+  const handleFilter = useCallback(() => {
+  console.log({ status, dateFrom, dateTo });
+
+  const start = new Date(dateFrom);
+  const end = new Date(dateTo);
+
+  const filtered = attendanceData.filter((item) => {
+    const itemDate = new Date(item.date);
+    return itemDate >= start && itemDate <= end;
+  });
+
+  setFilteredData(filtered);
+}, [status, dateFrom, dateTo]); // Dependencies
+
   useEffect(() => {
     setInitialDates();
-  }, []);
+  }, [setInitialDates]);
   return (
     <>
       <div className="container-fluid box-shadow mt-3 rounded-3">
@@ -137,108 +135,17 @@ const AttendenceTable = () => {
         </div>
         <div className="row">
           <div className="text-end">
-            <button
-              className="theme--button py-2"
-              onClick={handleFilter}
-            >
+            <button className="theme--button py-2" onClick={handleFilter}>
               Filter
             </button>
           </div>
         </div>
         <div className="row">
           <div>
-            <Paper
-              elevation={0}
-              sx={{
-                width: "100%",
-                overflow: "hidden",
-                mt: "10px",
-                maxWidth: "100%",
-              }}
-            >
-              <TableContainer
-                sx={{
-                  display: "flex",
-                  maxHeight: 360,
-                  overflowX: "auto",
-                  width: "100%",
-                }}
-              >
-                <Box mb={3} textAlign={"center"}></Box>
-
-                <Table stickyHeader aria-label="sticky table">
-                  <TableHead>
-                    <TableRow>
-                      {columns.map((column) => (
-                        <TableCell
-                          key={column.id}
-                          align={column.align}
-                          style={{ minWidth: column.minWidth }}
-                        >
-                          <Typography variant="bold" color="initial">
-                            {column.label}
-                          </Typography>
-                        </TableCell>
-                      ))}
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {filteredData
-                      .slice(
-                        page * rowsPerPage,
-                        page * rowsPerPage + rowsPerPage
-                      )
-                      .map((row) => {
-                        return (
-                          <TableRow
-                            hover
-                            role="checkbox"
-                            tabIndex={-1}
-                            key={row.id}
-                          >
-                            {columns.map((column) => {
-                              const value = row[column.id];
-                              return (
-                                <TableCell key={column.id} align={column.align}>
-                                  {column.id === "status" ? (
-                                    <Chip
-                                      label={value}
-                                      variant="outlined"
-                                      color={
-                                        value === "Present"
-                                          ? "success"
-                                          : "danger"
-                                      }
-                                    />
-                                  ) : (
-                                    <Typography variant="body2" color="initial">
-                                      {value}
-                                    </Typography>
-                                  )}
-                                </TableCell>
-                              );
-                            })}
-                          </TableRow>
-                        );
-                      })}
-                  </TableBody>
-                </Table>
-              </TableContainer>
-              <TablePagination
-                rowsPerPageOptions={[10, 25, 100]}
-                component="div"
-                count={filteredData.length}
-                rowsPerPage={rowsPerPage}
-                page={page}
-                onPageChange={handleChangePage}
-                onRowsPerPageChange={handleChangeRowsPerPage}
-              />
-            </Paper>
+            <Table filteredData={filteredData} page={page} setPage={setPage} />
           </div>
         </div>
       </div>
-
-      {performance.now()-start}
     </>
   );
 };

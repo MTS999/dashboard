@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Welcome from "../components/Dashboard/Welcome";
 import UserData from "../components/Dashboard/UserData";
-import SidebarDrawer from "../components/GeneralComponents/SidebarDrawer";
-
 
 const Dashboard = () => {
+  const start = performance.now();
+
+  useEffect(() => {
+    console.log(performance.now() - start);
+  }, []);
   return (
     <>
-    <SidebarDrawer/>
       <Welcome />
       <UserData />
     </>
