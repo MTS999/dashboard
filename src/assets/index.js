@@ -2,5 +2,9 @@ import metaLogixLogo from "./images/metalogx.png"
 import startup from "./images/startup.jpg"
 import logo from "./images/ClubNetlogo-copy.png"
 import leaveRecord from "./images/leaveRecord.jpg"
-
-export {metaLogixLogo,startup,logo,leaveRecord}
+import GPS_CODE_LOGO from "./images/GPS_CODE_LOGO.png"
+import Ipad from "./images/Ipad.png"
+import kim from "./images/kim.png"
+import fear from "./images/fear.png"
+import Logo from "./images/Logo.svg"
+export {metaLogixLogo,startup,logo,leaveRecord,GPS_CODE_LOGO,Ipad,kim,fear,Logo}

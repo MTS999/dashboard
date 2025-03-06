@@ -7,82 +7,46 @@ import Table from "./Table";
 import { useCallback } from "react";
 
 const AttendenceTable = () => {
+
+
+  const today = new Date();
+  const firstDay = new Date(today.getFullYear(), today.getMonth(), 1);
+  const lastDay = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+
+  const formatDate = (date) => {
+    const offsetDate = new Date(
+      date.getTime() - date.getTimezoneOffset() * 60000
+    );
+    return offsetDate.toISOString().split("T")[0];
+  };
   const [status, setStatus] = useState("");
-  const [dateFrom, setDateFrom] = useState("");
-  const [dateTo, setDateTo] = useState("");
+  const [dateFrom, setDateFrom] = useState(formatDate(firstDay));
+  const [dateTo, setDateTo] = useState(formatDate(lastDay));
   const [filteredData, setFilteredData] = useState(attendanceData);
-  // const [page, setPage] = useState(0);
   const [page, setPage] = useState(0);
 
-  // const setInitialDates = () => {
-  //   const today = new Date();
-
-  //   // Calculate the first day of the current month
-  //   const firstDay = new Date(today.getFullYear(), today.getMonth(), 1);
-  //   // Calculate the last day of the current month
-  //   const lastDay = new Date(today.getFullYear(), today.getMonth() + 1, 0);
-
-  //   // Format dates to YYYY-MM-DD
-  //   const formatDate = (date) => {
-  //     const offsetDate = new Date(
-  //       date.getTime() - date.getTimezoneOffset() * 60000
-  //     );
-  //     return offsetDate.toISOString().split("T")[0];
-  //   };
-
-  //   // Set the formatted dates
-  //   setDateFrom(formatDate(firstDay));
-  //   setDateTo(formatDate(lastDay));
-  // };
-
-
-  const setInitialDates = useCallback(() => {
-    const today = new Date();
-    const firstDay = new Date(today.getFullYear(), today.getMonth(), 1);
-    const lastDay = new Date(today.getFullYear(), today.getMonth() + 1, 0);
-  
-    const formatDate = (date) => {
-      const offsetDate = new Date(date.getTime() - date.getTimezoneOffset() * 60000);
-      return offsetDate.toISOString().split("T")[0];
-    };
-  
-    setDateFrom(formatDate(firstDay));
-    setDateTo(formatDate(lastDay));
-  }, []); // No dependencies
-  
-  // const handleFilter = () => {
-  //   console.log({ status, dateFrom, dateTo });
-
-  //   const start = new Date(dateFrom);
-  //   const end = new Date(dateTo);
-
-  //   const filtered = attendanceData.filter((item) => {
-  //     const itemDate = new Date(item.date);
-
-  //     return itemDate >= start && itemDate <= end;
-  //   });
-
-  //   setFilteredData(filtered);
-  // };
 
 
   const handleFilter = useCallback(() => {
-  console.log({ status, dateFrom, dateTo });
+    console.log({ status, dateFrom, dateTo });
 
-  const start = new Date(dateFrom);
-  const end = new Date(dateTo);
+    const start = new Date(dateFrom);
+    const end = new Date(dateTo);
 
-  const filtered = attendanceData.filter((item) => {
-    const itemDate = new Date(item.date);
-    return itemDate >= start && itemDate <= end;
-  });
+    const filtered = attendanceData.filter((item) => {
+      const itemDate = new Date(item.date);
+      return itemDate >= start && itemDate <= end;
+    });
 
-  setFilteredData(filtered);
-}, [status, dateFrom, dateTo]); // Dependencies
+    setFilteredData(filtered);
+  }, [status, dateFrom, dateTo]); // Dependencies
 
-  useEffect(() => {
-    setInitialDates();
-  }, [setInitialDates]);
+
+  const setInitialDates=()=>{
+     setDateFrom(formatDate(firstDay))
+     setDateTo(formatDate(lastDay))
+  }
+
   return (
     <>
       <div className="container-fluid box-shadow mt-3 rounded-3">
@@ -133,7 +97,7 @@ const AttendenceTable = () => {
             </div>
           </div>
         </div>
-        <div className="row">
+        <div className="row mb-3">
           <div className="text-end">
             <button className="theme--button py-2" onClick={handleFilter}>
               Filter

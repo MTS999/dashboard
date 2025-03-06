@@ -27,31 +27,7 @@ function MainLayout(props) {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      {/* <AppBar
-        elevation={0}
-        position="fixed"
-        sx={{
-          width: { lg: `calc(100% - ${drawerWidth}px)` },
-          ml: { lg: `${drawerWidth}px` },
-          backgroundColor: "transparent",
-        }}
-      >
-        <Toolbar>
-          <IconButton
-            color="primary.dark"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { lg: "none" } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Stack textAlign={"end"} width={"100%"}>
-            <BasicMenu />
-          </Stack>
-        </Toolbar>
-      </AppBar> */}
+   
 
       <AppbarHeader handleDrawerToggle={handleDrawerToggle}  />
       <Box

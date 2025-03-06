@@ -17,6 +17,7 @@ import LoginLayout from "../Layout/LoginLayout/LoginLayout";
 import NewPassword from "../Layout/LoginLayout/NewPassword";
 
 import { ProductLayout,Collection,CollectionItem,AddProduct } from "../Layout/ProductLayout";
+import DynamiteLifeStyle from "../pages/DynamiteLifeStyle";
 const AppRoutes = () => {
   return (
     <Routes>
@@ -44,6 +45,8 @@ const AppRoutes = () => {
         <Route path="collection-item/:id" element={<CollectionItem />} />
         <Route path="add-item" element={<AddProduct />} />
       </Route>
+
+      <Route path="gps-code-challange" element={<DynamiteLifeStyle/>}/>
     </Routes>
   );
 };

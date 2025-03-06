@@ -110,13 +110,13 @@ const ChangeProfile = () => {
 
         {/* Update Profile Button */}
         <div className="text-end mt-3">
-          <Button
-            variant="contained"
-            color="primary"
+          <button
+          className="theme--button px-3 py-2"
+        
             // onClick={handleUpdate}
           >
             Update Profile
-          </Button>
+          </button>
         </div>
       </div>
     </div>

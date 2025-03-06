@@ -30,7 +30,7 @@ const ChangePassword = () => {
         </div>
       
         <div className="col">
-          <button className="theme--button w-100 p-3">SAVE</button>
+          <button className="theme--button w-100 p-3 ">SAVE</button>
         </div>
             </>
       

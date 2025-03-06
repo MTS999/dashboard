@@ -4,14 +4,14 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import AccountMenu from "./AccountMenu/AccountMenu";
-import { Stack } from "@mui/material";
+import { Stack,CssBaseline } from "@mui/material";
 
 const AppBarNav = ({handleDrawerToggle}) => {
     const drawerWidth = 280;
 
   return (
     <>
-    {/* <CssBaseline /> */}
+    <CssBaseline />
 
    <AppBar
         elevation={0}
